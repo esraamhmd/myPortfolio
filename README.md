@@ -9,6 +9,10 @@
 
 <br/><br/>
 
+https://github.com/user-attachments/assets/702af285-533f-48a8-a9f5-80ca3abfd60a
+
+
+
 ### A modern, fully responsive personal portfolio built with React and Material UI - featuring dark/light mode, smooth hover effects, Lottie animations, and a real projects showcase.
 
 <br/>
