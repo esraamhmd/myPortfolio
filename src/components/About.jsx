@@ -19,16 +19,16 @@ export default function About() {
           {/* Lottie — much bigger */}
           <Box sx={{
             flex: '0 0 auto',
-            width: { xs: '90%', sm: '65%', md: '46%' },
+            width: { xs: '90%', sm: '65%', md: '48%' },
             mx: { xs: 'auto', md: 0 },
             filter: 'drop-shadow(0 16px 50px rgba(233,30,140,0.20))',
             '&:hover': { transform: 'scale(1.03)' },
             transition: 'transform 0.3s',
           }}>
             <DotLottieReact
-              src="/src/assets/about.lottie"
+              src="/assets/about.lottie"
               autoplay loop
-              style={{ width: '100%', height: 'auto', minHeight: 380 }}
+              style={{ width: '100%', height: 'auto', minHeight: 400 }}
             />
           </Box>
 

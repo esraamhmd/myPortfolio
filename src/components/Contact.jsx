@@ -42,16 +42,16 @@ export default function Contact() {
 
   const fieldSx = {
     '& .MuiOutlinedInput-root': {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Plus Jakarta Sans", sans-serif',
       borderRadius: 2.5,
       bgcolor: 'rgba(233,30,140,0.04)',
       '& fieldset': { borderColor: 'rgba(233,30,140,0.22)' },
       '&:hover fieldset': { borderColor: 'rgba(233,30,140,0.5)' },
       '&.Mui-focused fieldset': { borderColor: '#e91e8c' },
     },
-    '& .MuiInputLabel-root': { fontFamily: '"Outfit", sans-serif', color: 'text.secondary' },
+    '& .MuiInputLabel-root': { fontFamily: '"Plus Jakarta Sans", sans-serif', color: 'text.secondary' },
     '& .MuiInputLabel-root.Mui-focused': { color: '#e91e8c' },
-    '& .MuiOutlinedInput-input': { fontFamily: '"Outfit", sans-serif' },
+    '& .MuiOutlinedInput-input': { fontFamily: '"Plus Jakarta Sans", sans-serif' },
   }
 
   return (
@@ -63,13 +63,13 @@ export default function Contact() {
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 600, letterSpacing: 3, fontFamily: '"Outfit",sans-serif' }}>
+            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 600, letterSpacing: 3, fontFamily: '"Plus Jakarta Sans",sans-serif' }}>
               Contact Me
             </Typography>
           </Box>
           <Typography variant="h2" sx={{
             color: 'text.primary',
-            fontFamily: '"Outfit",sans-serif',
+            fontFamily: '"Plus Jakarta Sans",sans-serif',
             fontWeight: 700,
             fontSize: { xs: '2.2rem', md: '3rem' },
           }}>
@@ -95,7 +95,7 @@ export default function Contact() {
             transition: 'transform 0.3s',
           }}>
             <DotLottieReact
-              src="/src/assets/contact.lottie"
+              src="/assets/contact.lottie"
               autoplay loop
               style={{ width: '100%', height: 'auto', minHeight: 420 }}
             />
@@ -127,7 +127,7 @@ export default function Contact() {
                   type="submit" variant="contained" disabled={loading}
                   endIcon={loading ? <CircularProgress size={18} color="inherit" /> : <SendIcon />}
                   sx={{
-                    fontFamily: '"Outfit",sans-serif',
+                    fontFamily: '"Plus Jakarta Sans",sans-serif',
                     bgcolor: 'primary.main', color: '#fff',
                     fontWeight: 700, py: 1.8,
                     borderRadius: 3, textTransform: 'none', fontSize: '1.05rem',

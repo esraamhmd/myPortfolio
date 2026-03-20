@@ -91,7 +91,7 @@ export default function Hero() {
               <span className="tc-cur" />
             </Typography>
 
-            
+            {/* GitHub + LinkedIn — centered, real links */}
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
               {[
                 { icon: <GitHubIcon sx={{ fontSize: 24 }} />,   label: 'GitHub',   href: 'https://github.com/esraamhmd' },
@@ -130,7 +130,7 @@ export default function Hero() {
             transition: 'transform 0.3s',
           }}>
             <DotLottieReact
-              src="/src/assets/home.lottie"
+              src="/assets/home.lottie"
               autoplay loop
               style={{ width: '100%', height: 'auto', minHeight: 360 }}
             />

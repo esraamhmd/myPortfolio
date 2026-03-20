@@ -12,7 +12,7 @@ const PROJECTS = [
     desc: 'Full-featured e-commerce app with smart search, mega menus, cart, wishlist, checkout, and real product data from DummyJSON API. Built without UI libraries.',
     tags: ['React', 'TypeScript', 'Redux Toolkit', 'React Router', 'DummyJSON API'],
     github: 'https://github.com/esraamhmd/shopnest-E-commrce-website',
-    img: '/src/assets/ShopNest.png',
+    img: '/assets/ShopNest.png',
     color: '#e91e8c',
   },
   {
@@ -20,7 +20,7 @@ const PROJECTS = [
     desc: 'Full product management system with create, edit, delete, real-time search, auto-calculated totals, localStorage persistence, and dark/light mode.',
     tags: ['React', 'Tailwind CSS', 'JavaScript', 'LocalStorage', 'Lottie'],
     github: 'https://github.com/esraamhmd/CRUDsystem',
-    img: '/src/assets/CRUD.png',
+    img: '/assets/CRUD.png',
     color: '#764abc',
   },
   {
@@ -28,7 +28,7 @@ const PROJECTS = [
     desc: 'Comprehensive music platform featuring trending tracks, popular artists, new releases, and a responsive modern interface with playback controls.',
     tags: ['React.js', 'Bootstrap', 'CSS', 'JavaScript', 'FontAwesome'],
     github: 'https://github.com/esraamhmd/elite-music',
-    img: '/src/assets/Elite.png',
+    img: '/assets/Elite.png',
     color: '#ff6ec7',
   },
   {
@@ -36,7 +36,7 @@ const PROJECTS = [
     desc: 'Full online fashion store with product catalog, shopping cart, user authentication, checkout process, and admin panel for managing products and orders.',
     tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'MySQL'],
     github: 'https://github.com/esraamhmd/online-store-project',
-    img: '/src/assets/Women.png',
+    img: '/assets/Women.png',
     color: '#38bdf8',
   },
   {
@@ -44,7 +44,7 @@ const PROJECTS = [
     desc: 'Real-time weather application showing temperature, humidity, and wind speed for any city. Fetches live data from a weather API with full error handling.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Weather API'],
     github: 'https://github.com/esraamhmd/weather-App',
-    img: '/src/assets/weather.png',
+    img: '/assets/weather.png',
     color: '#4caf50',
   },
   {
@@ -52,7 +52,7 @@ const PROJECTS = [
     desc: 'Responsive calculator with basic arithmetic, square root, and exponentiation. Clean animated UI with error handling for invalid expressions.',
     tags: ['HTML5', 'CSS3', 'JavaScript'],
     github: 'https://github.com/esraamhmd/Calculator-App',
-    img: '/src/assets/Calculator.png',
+    img: '/assets/Calculator.png',
     color: '#f7df1e',
   },
   {
@@ -60,7 +60,7 @@ const PROJECTS = [
     desc: 'Responsive bakery website with hero banner, product galleries, contact form, cart simulation, and smooth navigation between sections.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
     github: 'https://github.com/esraamhmd/bakery-web',
-    img: '/src/assets/soso.png',
+    img: '/assets/soso.png',
     color: '#ed8b00',
   },
   {
@@ -68,12 +68,12 @@ const PROJECTS = [
     desc: 'Interactive word unscrambling game with hints, countdown timer, random word generation, input validation, and responsive design.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/esraamhmd/Word_Scramble',
-    img: '/src/assets/word.png',
+    img: '/assets/word.png',
     color: '#9c27b0',
   },
 ]
 
-
+// → goes to repositories tab
 const REPOS_URL = 'https://github.com/esraamhmd?tab=repositories'
 
 export default function Projects() {
@@ -122,7 +122,7 @@ export default function Projects() {
               transition: 'all 0.28s',
             }}>
 
-             
+              {/* screenshot */}
               <Box sx={{
                 height: 200, overflow: 'hidden',
                 bgcolor: `${p.color}08`,
@@ -177,7 +177,7 @@ export default function Projects() {
                   ))}
                 </Box>
 
-               
+                {/* GitHub only — no LinkedIn */}
                 <Button
                   component="a" href={p.github} target="_blank" rel="noopener noreferrer"
                   startIcon={<GitHubIcon fontSize="small" />}
