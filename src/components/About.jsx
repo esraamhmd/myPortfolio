@@ -63,7 +63,7 @@ export default function About() {
             }}>
               <Typography sx={{ color: 'text.secondary', lineHeight: 1.95, fontSize: '1.05rem' }}>
                 Recent Computer Science and AI graduate passionate about frontend development.
-                Skilled in HTML, CSS, JavaScript, React.js and more — with hands-on experience
+                Skilled in HTML, CSS, JavaScript, React.js and more  with hands-on experience
                 building responsive web applications. Completed React.js training at ITI.
               </Typography>
             </Paper>

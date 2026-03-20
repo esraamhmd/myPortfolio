@@ -8,7 +8,7 @@ const items = [
   {
     Icon: AccountBalanceIcon,
     type: 'University',
-    institution: 'Modern University for Technology & Information — MTI',
+    institution: 'Modern University for Technology & Information - MTI',
     degree: 'Bachelor of Computer Science and AI',
     sub: 'Computer Science Department',
     period: 'Oct 2021 – Jul 2025',
