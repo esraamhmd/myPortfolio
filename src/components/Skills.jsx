@@ -15,10 +15,8 @@ const SKILLS = [
   { name: 'CSS3',          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',             color: '#264de4', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
   { name: 'HTML5',         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',           color: '#e34c26', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
   { name: 'Git & GitHub',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',               color: '#f05032', url: 'https://git-scm.com/doc' },
-  { name: 'OOP',           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',             color: '#ed8b00', url: 'https://www.w3schools.com/java/java_oop.asp' },
   { name: 'C++',           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',   color: '#00599c', url: 'https://cplusplus.com/doc/tutorial' },
   { name: 'Python',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',         color: '#3776ab', url: 'https://docs.python.org/3' },
-  { name: 'SQL',           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',           color: '#4479a1', url: 'https://dev.mysql.com/doc' },
 ]
 
 export default function Skills() {

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Box, Typography, IconButton, Container } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import EmailIcon from '@mui/icons-material/Email'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { ColorModeContext } from '../App'
 
@@ -25,6 +26,12 @@ ${charCss}
 }
 @keyframes tc-blink{0%,100%{opacity:1}50%{opacity:0}}
 `
+
+const SOCIALS = [
+  { icon: <GitHubIcon sx={{ fontSize: 22 }} />,   label: 'GitHub',   href: 'https://github.com/esraamhmd',                    color: '#fff' },
+  { icon: <LinkedInIcon sx={{ fontSize: 22 }} />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/esraamhmd/',          color: '#0a66c2' },
+  { icon: <EmailIcon sx={{ fontSize: 22 }} />,    label: 'Gmail',    href: 'mailto:esraammohamedd@gmail.com',                     color: '#e91e8c' },
+]
 
 export default function Hero() {
   const { mode } = useContext(ColorModeContext)
@@ -91,25 +98,24 @@ export default function Hero() {
               <span className="tc-cur" />
             </Typography>
 
-            {/* GitHub + LinkedIn — centered, real links */}
+            {/* GitHub + LinkedIn + Gmail */}
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-              {[
-                { icon: <GitHubIcon sx={{ fontSize: 24 }} />,   label: 'GitHub',   href: 'https://github.com/esraamhmd' },
-                { icon: <LinkedInIcon sx={{ fontSize: 24 }} />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/esraamhmd/' },
-              ].map(s => (
+              {SOCIALS.map(s => (
                 <IconButton
                   key={s.label}
                   component="a" href={s.href} target="_blank" rel="noopener noreferrer" title={s.label}
                   sx={{
                     color: 'text.secondary',
                     border: '1px solid rgba(233,30,140,0.28)',
-                    borderRadius: 2, width: 54, height: 54,
+                    borderRadius: 2,
+                    width: 52, height: 52,
                     boxShadow: '0 4px 16px rgba(233,30,140,0.10)',
                     '&:hover': {
-                      color: 'primary.main', borderColor: 'primary.main',
-                      bgcolor: 'rgba(233,30,140,0.09)',
+                      color: s.color,
+                      borderColor: s.color,
+                      bgcolor: `${s.color}15`,
                       transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 28px rgba(233,30,140,0.28)',
+                      boxShadow: `0 8px 28px ${s.color}40`,
                     },
                     transition: 'all 0.22s',
                   }}
