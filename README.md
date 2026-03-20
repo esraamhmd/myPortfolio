@@ -78,14 +78,7 @@ MUI provides the component system — `Box`, `Container`, `Paper`, `Typography`,
 ### 🌙 Dark / Light Mode
 A full theme toggle built with React `createContext` and MUI `createTheme`. The mode persists across the session and switches all colors, backgrounds, and shadows instantly.
 
-### 🎞️ Lottie — @lottiefiles/dotlottie-react
-Three `.lottie` animations bring the UI to life — one each for the Home, About, and Contact sections. Loaded from `public/assets/`.
 
-### 📧 EmailJS
-Contact form integration ready — fill in your Service ID, Template ID, and Public Key to activate email sending directly to your Gmail inbox.
-
-### 🔤 Plus Jakarta Sans
-Google Font loaded via `index.html`. Applied globally across all components for a clean, modern typographic feel.
 
 ---
 
