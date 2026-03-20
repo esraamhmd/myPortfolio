@@ -9,7 +9,7 @@
 
 <br/><br/>
 
-### A modern, fully responsive personal portfolio built with React and Material UI — featuring dark/light mode, smooth hover effects, Lottie animations, and a real projects showcase.
+### A modern, fully responsive personal portfolio built with React and Material UI - featuring dark/light mode, smooth hover effects, Lottie animations, and a real projects showcase.
 
 <br/>
 
@@ -19,7 +19,7 @@
 
 ## 🔗 Live Demo
 
-[[https://esraa-portfolio.vercel.app](https://esraa-portfolio.vercel.app)](https://esraamhmd-portfolio.vercel.app/)
+https://esraamhmd-portfolio.vercel.app/
 
 ---
 
