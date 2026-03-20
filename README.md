@@ -4,10 +4,8 @@
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
 <img src="https://img.shields.io/badge/Material_UI-e91e8c?style=for-the-badge&logo=mui&logoColor=white" />
-<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-<img src="https://img.shields.io/badge/EmailJS-FF6B35?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Lottie-Animations-00DDB3?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Plus_Jakarta_Sans-Font-e91e8c?style=for-the-badge" />
+
+
 
 <br/><br/>
 
@@ -21,7 +19,7 @@
 
 ## 🔗 Live Demo
 
-[https://esraa-portfolio.vercel.app](https://esraa-portfolio.vercel.app)
+[[https://esraa-portfolio.vercel.app](https://esraa-portfolio.vercel.app)](https://esraamhmd-portfolio.vercel.app/)
 
 ---
 
@@ -91,41 +89,6 @@ Google Font loaded via `index.html`. Applied globally across all components for 
 
 ---
 
-## 📁 Project Structure
-
-```
-Portfolio-Website/
-├── public/
-│   └── assets/
-│       ├── home.lottie
-│       ├── about.lottie
-│       ├── contact.lottie
-│       ├── ShopNest.png
-│       ├── CRUD.png
-│       ├── Elite.png
-│       ├── Women.png
-│       ├── weather.png
-│       ├── Calculator.png
-│       ├── soso.png
-│       └── word.png
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Education.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Contact.jsx
-│   │   └── Footer.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── index.html
-├── package.json
-└── vite.config.js
-```
-
----
 
 ## 🛠️ Getting Started
 
