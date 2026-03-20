@@ -59,7 +59,9 @@ export default function Contact() {
             Get In <Box component="span" sx={{ color: 'primary.main' }}>Touch</Box>{' '}
             <WavingHandIcon sx={{ color: 'primary.main', fontSize: '2rem', verticalAlign: 'middle' }} />
           </Typography>
-          
+          <Typography sx={{ color: 'text.secondary', fontFamily: FONT, mt: 1.5, fontSize: '1rem' }}>
+            Feel free to reach out through any of the channels below
+          </Typography>
         </Box>
 
         {/* Layout: Lottie left + 3 cards right */}
@@ -89,6 +91,7 @@ export default function Contact() {
           {/* 3 large contact cards stacked */}
           <Box sx={{
             flex: 1,
+            minWidth: 0,
             display: 'flex',
             flexDirection: 'column',
             gap: 3,
@@ -105,13 +108,14 @@ export default function Contact() {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 3,
-                  p: { xs: 3, md: 4 },
+                  gap: 2,
+                  p: { xs: 2.5, md: 4 },
                   bgcolor: 'background.paper',
                   border: '1px solid',
                   borderColor: `${c.color}22`,
                   borderRadius: 4,
                   textDecoration: 'none',
+                  
                   boxShadow: `0 4px 24px ${c.color}0e`,
                   '&:hover': {
                     borderColor: `${c.color}70`,
@@ -121,10 +125,11 @@ export default function Contact() {
                   transition: 'all 0.28s',
                 }}
               >
-                {/* Icon circle */}
+                {/* Icon */}
                 <Box sx={{
                   flexShrink: 0,
-                  width: 72, height: 72,
+                  width: { xs: 56, md: 72 },
+                  height: { xs: 56, md: 72 },
                   borderRadius: 3,
                   bgcolor: `${c.color}12`,
                   border: '1.5px solid',
@@ -136,23 +141,29 @@ export default function Contact() {
                   {c.icon}
                 </Box>
 
-                {/* Text */}
-                <Box>
+                {/* Text — minWidth:0 + overflow fixes mobile overflow */}
+                <Box sx={{ minWidth: 0, flex: 1 }}>
                   <Typography sx={{
                     fontFamily: FONT, fontWeight: 800,
-                    fontSize: '1.1rem', color: 'text.primary', mb: 0.4,
+                    fontSize: { xs: '1rem', md: '1.1rem' },
+                    color: 'text.primary', mb: 0.4,
                   }}>
                     {c.label}
                   </Typography>
                   <Typography sx={{
                     fontFamily: FONT, fontWeight: 600,
-                    fontSize: '0.95rem', color: c.color, mb: 0.3,
+                    fontSize: { xs: '0.78rem', md: '0.95rem' },
+                    color: c.color, mb: 0.3,
+                    
+                    
+                    wordBreak: 'break-all',
                   }}>
                     {c.value}
                   </Typography>
                   <Typography sx={{
                     fontFamily: FONT,
-                    fontSize: '0.82rem', color: 'text.secondary',
+                    fontSize: { xs: '0.75rem', md: '0.82rem' },
+                    color: 'text.secondary',
                   }}>
                     {c.sub}
                   </Typography>
