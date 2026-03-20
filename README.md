@@ -1,4 +1,4 @@
-# 🌸 Esraa Mahmoud — Frontend Developer Portfolio
+# 🌸 Esraa Mahmoud - Frontend Developer Portfolio
 
 <div align="center">
 
