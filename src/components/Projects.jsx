@@ -8,7 +8,7 @@ const FONT = '"Plus Jakarta Sans", sans-serif'
 
 const PROJECTS = [
   {
-    title: 'ShopNest — E-commerce App',
+    title: 'ShopNest - E-commerce App',
     desc: 'Full-featured e-commerce app with smart search, mega menus, cart, wishlist, checkout, and real product data from DummyJSON API. Built without UI libraries.',
     tags: ['React', 'TypeScript', 'Redux Toolkit', 'React Router', 'DummyJSON API'],
     github: 'https://github.com/esraamhmd/shopnest-E-commrce-website',
@@ -16,7 +16,7 @@ const PROJECTS = [
     color: '#e91e8c',
   },
   {
-    title: 'CRUD System — Product Management',
+    title: 'CRUD System - Product Management',
     desc: 'Full product management system with create, edit, delete, real-time search, auto-calculated totals, localStorage persistence, and dark/light mode.',
     tags: ['React', 'Tailwind CSS', 'JavaScript', 'LocalStorage', 'Lottie'],
     github: 'https://github.com/esraamhmd/CRUDsystem',
@@ -73,7 +73,7 @@ const PROJECTS = [
   },
 ]
 
-// → goes to repositories tab
+// goes to repositories tab
 const REPOS_URL = 'https://github.com/esraamhmd?tab=repositories'
 
 export default function Projects() {

@@ -10,7 +10,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { ColorModeContext } from '../App'
 
-const NAV = ['Home', 'About', 'Skills', 'Projects', 'Contact']
+const NAV = ['Home', 'About', 'Education', 'Skills', 'Projects', 'Contact']
 const FONT = '"Plus Jakarta Sans", sans-serif'
 
 export default function Navbar() {
@@ -79,7 +79,7 @@ export default function Navbar() {
          
           <Box sx={{ flex: 1 }} />
 
-         
+       
           {!mobile && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.2 }}>
               {NAV.map(link => (
@@ -99,7 +99,7 @@ export default function Navbar() {
                 </Button>
               ))}
 
-              
+              {/* Theme toggle — rightmost */}
               <Tooltip title={dark ? 'Light mode' : 'Dark mode'}>
                 <IconButton
                   onClick={toggleColorMode}

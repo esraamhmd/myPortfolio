@@ -18,7 +18,7 @@ export default function Footer() {
         my<Box component="span" sx={{ color: 'primary.main' }}>Portfolio</Box>
       </Typography>
       <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: '0.82rem' }}>
-        Esraa Mahmoud — Frontend Developer
+        Esraa Mahmoud - Frontend Developer
       </Typography>
     </Box>
   )
