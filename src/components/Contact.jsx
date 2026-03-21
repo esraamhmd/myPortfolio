@@ -60,7 +60,7 @@ export default function Contact() {
             <WavingHandIcon sx={{ color: 'primary.main', fontSize: '2rem', verticalAlign: 'middle' }} />
           </Typography>
           <Typography sx={{ color: 'text.secondary', fontFamily: FONT, mt: 1.5, fontSize: '1rem' }}>
-            Feel free to reach out through any of the channels below
+            Feel free to reach me through any of the channels below
           </Typography>
         </Box>
 

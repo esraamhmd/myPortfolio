@@ -39,6 +39,14 @@ const PROJECTS = [
     img: '/assets/Women.png',
     color: '#38bdf8',
   },
+   {
+    title: "Soso's Bakery",
+    desc: 'Responsive bakery website with hero banner, product galleries, contact form, cart simulation, and smooth navigation between sections.',
+    tags: ['React.js', 'Typscript', 'Bootstrap'],
+    github: 'https://github.com/esraamhmd/bakery-web',
+    img: '/assets/soso.png',
+    color: '#ed8b00',
+  },
   {
     title: 'Weather App',
     desc: 'Real-time weather application showing temperature, humidity, and wind speed for any city. Fetches live data from a weather API with full error handling.',
@@ -55,14 +63,7 @@ const PROJECTS = [
     img: '/assets/Calculator.png',
     color: '#f7df1e',
   },
-  {
-    title: "Soso's Bakery",
-    desc: 'Responsive bakery website with hero banner, product galleries, contact form, cart simulation, and smooth navigation between sections.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
-    github: 'https://github.com/esraamhmd/bakery-web',
-    img: '/assets/soso.png',
-    color: '#ed8b00',
-  },
+ 
   {
     title: 'Word Scramble Game',
     desc: 'Interactive word unscrambling game with hints, countdown timer, random word generation, input validation, and responsive design.',
