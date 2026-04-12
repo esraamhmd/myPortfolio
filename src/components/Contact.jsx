@@ -32,7 +32,7 @@ const CONTACTS = [
     value: 'github.com/esraamhmd',
     sub: 'Check out my repositories',
     href: 'https://github.com/esraamhmd',
-    color: '#fff',
+    color: '#a0a0b0',  
   },
 ]
 
