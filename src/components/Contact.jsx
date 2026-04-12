@@ -64,7 +64,7 @@ export default function Contact() {
           </Typography>
         </Box>
 
-        {/* Layout: Lottie left + 3 cards right */}
+       
         <Box sx={{
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
@@ -88,7 +88,7 @@ export default function Contact() {
             />
           </Box>
 
-          {/* 3 large contact cards stacked */}
+      
           <Box sx={{
             flex: 1,
             minWidth: 0,
@@ -141,7 +141,7 @@ export default function Contact() {
                   {c.icon}
                 </Box>
 
-                {/* Text — minWidth:0 + overflow fixes mobile overflow */}
+          
                 <Box sx={{ minWidth: 0, flex: 1 }}>
                   <Typography sx={{
                     fontFamily: FONT, fontWeight: 800,

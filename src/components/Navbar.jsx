@@ -99,7 +99,7 @@ export default function Navbar() {
                 </Button>
               ))}
 
-              {/* Theme toggle — rightmost */}
+              
               <Tooltip title={dark ? 'Light mode' : 'Dark mode'}>
                 <IconButton
                   onClick={toggleColorMode}

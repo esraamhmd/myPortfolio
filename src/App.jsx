@@ -33,7 +33,7 @@ export default function App() {
       },
     },
     typography: {
-      /* Plus Jakarta Sans everywhere */
+      
       fontFamily: '"Plus Jakarta Sans", sans-serif',
       h1: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800 },
       h2: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 700 },

@@ -16,7 +16,7 @@ export default function About() {
           gap: { xs: 6, md: 10 },
         }}>
 
-          {/* Lottie — much bigger */}
+  
           <Box sx={{
             flex: '0 0 auto',
             width: { xs: '90%', sm: '65%', md: '48%' },

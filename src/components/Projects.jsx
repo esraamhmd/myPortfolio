@@ -74,7 +74,7 @@ const PROJECTS = [
   },
 ]
 
-// goes to repositories tab
+
 const REPOS_URL = 'https://github.com/esraamhmd?tab=repositories'
 
 export default function Projects() {
@@ -177,8 +177,6 @@ export default function Projects() {
                     }} />
                   ))}
                 </Box>
-
-                {/* GitHub only — no LinkedIn */}
                 <Button
                   component="a" href={p.github} target="_blank" rel="noopener noreferrer"
                   startIcon={<GitHubIcon fontSize="small" />}
