@@ -29,11 +29,11 @@ export default function App() {
       },
       text: {
         primary:   mode === 'dark' ? '#f0e6ff' : '#1a0a2e',
-        secondary: mode === 'dark' ? '#c9aff0' : '#4a2d6a',
+        secondary: mode === 'dark' ? '#a08cc0' : '#6b4f7a',
       },
     },
     typography: {
-     
+      
       fontFamily: '"Plus Jakarta Sans", sans-serif',
       h1: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800 },
       h2: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 700 },
