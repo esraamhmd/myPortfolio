@@ -18,7 +18,7 @@ const SKILLS = [
   { name: 'Tailwind CSS',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg', color: '#38bdf8', url: 'https://tailwindcss.com/docs' },
   { name: 'Material UI',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg',      color: '#e91e8c', url: 'https://mui.com' },
   { name: 'RESTful API',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',            color: '#009688', url: 'https://restfulapi.net' },
-  { name: 'Node.js',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',              color: '#68a063', url: 'https://nodejs.org/docs' },
+  { name: 'Node.js',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',              color: '#68a063', url: 'https://nodejs.org/learn' },
   { name: 'Express.js',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',            color: '#ffffff', url: 'https://expressjs.com' },
   { name: 'MongoDB',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',            color: '#47a248', url: 'https://www.mongodb.com/docs' },
   { name: 'Playwright',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg',      color: '#45ba4b', url: 'https://playwright.dev' },
