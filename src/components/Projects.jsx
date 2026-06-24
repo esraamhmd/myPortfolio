@@ -95,6 +95,38 @@ const PROJECTS = [
     img: '/assets/word.png',
     color: '#9c27b0',
   },
+  {
+    title: 'Delicious Bites Restaurant',
+    desc: 'Is a modern and responsive restaurant website built with HTML5 and CSS3. It features Home, About, Menu, and Contact pages.',
+    tags: ['HTML', 'CSS'],
+    github: 'https://github.com/esraamhmd/Delicious-Bites-Restaurant-html-css',
+    img: '/assets/rest.png',
+    color: '#e91e8c',
+  },
+    {
+    title: 'Dashboard UI Landing Page',
+    desc: 'Is a modern and responsive admin dashboard featuring a sidebar menu, user profile, statistics cards, and a products table. It provides an organized and user-friendly interface for managing and viewing data.',
+    tags: ['HTML', 'CSS','Font Awesome'],
+    github: 'https://github.com/esraamhmd/Dashboard-Landing-page-html-css',
+    img: '/assets/das.png',
+    color: '#00bcd4',
+  },
+   {
+    title: 'Avatar Landing page',
+    desc: 'Is a modern and responsive page inspired by the Avatar world, featuring a hero section and navigation menu.',
+    tags: ['HTML', 'CSS'],
+    github: 'https://github.com/esraamhmd/-Landing-page-Avatar-html-css',
+    img: '/assets/av.png',
+    color: '#764abc',
+  },
+   {
+    title: 'Adidas Landing Page',
+    desc: 'Is a simple and responsive landing page featuring a modern design, navigation bar, and product showcase section.',
+    tags: ['HTML', 'CSS'],
+    github: 'https://github.com/esraamhmd/Adidas-html-css',
+    img: '/assets/ad.png',
+    color: '#ff6ec7',
+  },
 ]
 
 
