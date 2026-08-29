@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, Container, Paper } from '@mui/material'
+import { Box, useTheme, Typography, Container, Paper } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -37,18 +37,20 @@ const CONTACTS = [
 ]
 
 export default function Contact() {
+  const theme = useTheme()
+  const isDark = theme.palette.mode === 'dark'
   return (
-    <Box id="contact" sx={{ py: 14, width: '100%', bgcolor: 'background.default', position: 'relative', overflow: 'hidden' }}>
+    <Box id="contact" sx={{ py: { xs: 8, md: 14 }, width: '100%', bgcolor: 'transparent', position: 'relative', zIndex: 1, position: 'relative', overflow: 'hidden' }}>
       <Box sx={{ position:'absolute', top:'10%', right:'-6%', width:520, height:520, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(233,30,140,0.08) 0%,transparent 70%)' }} />
       <Box sx={{ position:'absolute', bottom:'5%', left:'-6%', width:400, height:400, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(140,30,200,0.07) 0%,transparent 70%)' }} />
 
       <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
 
         {/* Heading */}
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 8 } }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               Contact Me
             </Typography>
           </Box>
@@ -69,7 +71,7 @@ export default function Contact() {
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          gap: { xs: 6, md: 8 },
+          gap: { xs: 2, md: 8 },
         }}>
 
           {/* Lottie */}
@@ -83,8 +85,8 @@ export default function Contact() {
           }}>
             <DotLottieReact
               src="/assets/contact.lottie"
-              autoplay loop
-              style={{ width: '100%', height: 'auto', minHeight: 380 }}
+              autoplay={true} loop={true}
+              style={{ width: '100%', height: 'auto', minHeight: 220 }}
             />
           </Box>
 

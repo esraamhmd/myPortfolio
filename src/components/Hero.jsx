@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Box, Typography, IconButton, Container } from '@mui/material'
+import { Box, useTheme, Typography, IconButton, Container } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import EmailIcon from '@mui/icons-material/Email'
@@ -7,7 +7,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { ColorModeContext } from '../App'
 
 const FONT = '"Plus Jakarta Sans", sans-serif'
-const ROLE = 'Frontend Developer'
+const ROLE = 'Fullstack Developer'
 
 const charCss = ROLE.split('').map((_, i) =>
   `.tc-${i}{animation:tc-show 0.18s ease ${0.6 + i * 0.12}s both;}`
@@ -39,9 +39,9 @@ export default function Hero() {
 
   return (
     <Box id="home" sx={{
-      minHeight: '100vh', width: '100%',
+      minHeight: { xs: 'auto', md: '100vh' }, width: '100%',
       display: 'flex', alignItems: 'center',
-      bgcolor: 'background.default',
+      bgcolor: 'transparent', position: 'relative', zIndex: 1,
       position: 'relative', overflow: 'hidden',
     }}>
       <style>{css}</style>
@@ -49,17 +49,17 @@ export default function Hero() {
       <Box sx={{ position:'absolute', top:'-12%', right:'-8%', width:700, height:700, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(233,30,140,0.14) 0%,transparent 66%)' }} />
       <Box sx={{ position:'absolute', bottom:'-12%', left:'-8%', width:500, height:500, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(140,30,200,0.09) 0%,transparent 68%)' }} />
 
-      <Container maxWidth="xl" sx={{ pt: 10, pb: 6, px: { xs: 3, md: 6 } }}>
+      <Container maxWidth="xl" sx={{ pt: { xs: 8, md: 10 }, pb: { xs: 1, md: 6 }, px: { xs: 3, md: 6 } }}>
         <Box sx={{
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           gap: { xs: 5, md: 4 },
         }}>
 
           {/* LEFT */}
-          <Box sx={{ flex: '0 0 auto', width: { xs: '100%', md: '50%' } }}>
+          <Box sx={{ flex: '0 0 auto', width: { xs: '100%', md: '50%' }, textAlign: 'center' }}>
 
             <Typography variant="h1" sx={{
               fontFamily: FONT, fontWeight: 800,
@@ -78,7 +78,7 @@ export default function Hero() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               filter: 'drop-shadow(0 4px 16px rgba(233,30,140,0.35))',
-              wordBreak: 'keep-all', whiteSpace: 'nowrap',
+              wordBreak: 'keep-all',
             }}>
               Esraa Mahmoud
             </Typography>
@@ -103,7 +103,7 @@ export default function Hero() {
               {SOCIALS.map(s => (
                 <IconButton
                   key={s.label}
-                  component="a" href={s.href} target="_blank" rel="noopener noreferrer" title={s.label}
+                  component="a" href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label}
                   sx={{
                     color: 'text.secondary',
                     border: '1px solid rgba(233,30,140,0.28)',
@@ -126,7 +126,7 @@ export default function Hero() {
             </Box>
           </Box>
 
-          {/* RIGHT — Lottie */}
+         
           <Box sx={{
             flex: '0 0 auto',
             width: { xs: '85%', sm: '60%', md: '46%' },
@@ -137,8 +137,8 @@ export default function Hero() {
           }}>
             <DotLottieReact
               src="/assets/home.lottie"
-              autoplay loop
-              style={{ width: '100%', height: 'auto', minHeight: 360 }}
+              autoplay={true} loop={true}
+              style={{ width: '100%', height: 'auto', minHeight: 220 }}
             />
           </Box>
 
