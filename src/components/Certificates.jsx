@@ -199,7 +199,7 @@ export default function Certificates() {
             return (
               <>
                 <Box sx={{ flexShrink: 0, display: "flex", alignItems: "center", p: 1.5, borderBottom: `1px solid ${modal.color}20`, bgcolor: "background.paper", borderRadius: "16px 16px 0 0" }}>
-                  <Box sx={{ width: 4, height: 24, bgcolor: modal.color, borderRadius: 2, mr: 1.5 }} />
+                  <Box sx={{ width: 4, height: 24, bgcolor: "primary.main", borderRadius: 2, mr: 1.5 }} />
                   <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: "1rem", color: "text.primary", flex: 1 }}>{modal.title}</Typography>
                   <IconButton onClick={() => setModal(null)} aria-label="Close" sx={{ color: modalTextColor, border: `1px solid ${modal.color}30`, borderRadius: 2 }}><CloseIcon /></IconButton>
                 </Box>

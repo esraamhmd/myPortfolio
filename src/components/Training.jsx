@@ -80,13 +80,13 @@ export default function Training() {
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontFamily: FONT, fontWeight: 600, letterSpacing: 3 }}>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 600, letterSpacing: 3 }}>
               My Professional Development
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' } }}>
             Training, Courses{' '}
-            <Box component="span" sx={{ color: isDark ? '#f06ab3' : '#a8005e' }}>&amp; Programs</Box>
+            <Box component="span" sx={{ color: 'primary.main' }}>&amp; Programs</Box>
           </Typography>
         </Box>
 
@@ -105,17 +105,17 @@ export default function Training() {
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
                   {t.isDeloitte ? (
                     <Box sx={{ width: 52, height: 52, borderRadius: 2, flexShrink: 0, bgcolor: 'rgba(233,30,140,0.12)', border: '1.5px solid rgba(233,30,140,0.38)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(233,30,140,0.20)' }}>
-                      <EmojiEventsIcon sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontSize: 26 }} />
+                      <EmojiEventsIcon sx={{ color: 'primary.main', fontSize: 26 }} />
                     </Box>
                   ) : (
-                    <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: `${t.color}14`, border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, flexShrink: 0 }}>
+                    <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: 'transparent', border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, flexShrink: 0 }}>
                       <LocalLibraryIcon sx={{ fontSize: 24 }} />
                     </Box>
                   )}
 
                   <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 0.6 }}>
-                      <Chip label={t.type} size="small" sx={{ bgcolor: `${t.color}14`, color: textColor, border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
+                      <Chip label={t.type} size="small" sx={{ bgcolor: 'transparent', color: 'primary.main', border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
                       <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: FONT, fontWeight: 500 }}>{t.period}</Typography>
                     </Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: '0.97rem', color: 'text.primary', mb: 0.3, lineHeight: 1.4 }}>{t.role}</Typography>
@@ -130,7 +130,7 @@ export default function Training() {
                 {t.tags.length > 0 && (
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.7 }}>
                     {t.tags.map(tag => (
-                      <Chip key={tag} label={tag} size="small" sx={{ fontFamily: FONT, bgcolor: `${t.color}10`, color: textColor, border: `1px solid ${t.color}28`, fontSize: '0.69rem', fontWeight: 600, height: 20 }} />
+                      <Chip key={tag} label={tag} size="small" sx={{ fontFamily: FONT, bgcolor: 'transparent', color: 'primary.main', border: `1px solid ${t.color}28`, fontSize: '0.69rem', fontWeight: 600, height: 20 }} />
                     ))}
                   </Box>
                 )}

@@ -47,7 +47,7 @@ function StatItem({ num, suffix, label, started, delay }) {
       }}>
         {count}{suffix}
       </Typography>
-      <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: { xs: '0.85rem', md: '0.95rem' }, fontWeight: 600 }}>
+      <Typography sx={{ fontFamily: FONT, color: 'text.primary', opacity: 0.75, fontSize: { xs: '0.85rem', md: '0.95rem' }, fontWeight: 600 }}>
         {label}
       </Typography>
     </Box>

@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
 import About from './components/About'
-
+import Experience from './components/Experience'
 import Education from './components/Education'
 import Training from './components/Training'
 import Skills from './components/Skills'
@@ -85,6 +85,7 @@ export default function App() {
         <Hero />
         <Stats />
         <About />
+        <Experience/>
         <Training />
         <Education />
         

@@ -105,7 +105,7 @@ export default function Hero() {
                   key={s.label}
                   component="a" href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label}
                   sx={{
-                    color: 'text.secondary',
+                    color: 'text.primary', opacity: 0.75,
                     border: '1px solid rgba(233,30,140,0.28)',
                     borderRadius: 2,
                     width: 52, height: 52,

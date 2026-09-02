@@ -56,14 +56,14 @@ export default function Contact() {
 
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 8 } }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
-            <AutoAwesomeIcon sx={{ color: ac, fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: ac, fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
+            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               Contact Me
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' } }}>
-            Get In <Box component="span" sx={{ color: ac }}>Touch</Box>{' '}
-            <WavingHandIcon sx={{ color: ac, fontSize: '2rem', verticalAlign: 'middle' }} />
+            Get In <Box component="span" sx={{ color: 'primary.main' }}>Touch</Box>{' '}
+            <WavingHandIcon sx={{ color: 'primary.main', fontSize: '2rem', verticalAlign: 'middle' }} />
           </Typography>
           <Typography sx={{ color: 'text.primary', fontFamily: FONT, mt: 1.5, fontSize: '1rem', opacity: 0.75 }}>
             Feel free to reach me through any of the channels below
@@ -93,7 +93,7 @@ export default function Contact() {
                     <Typography sx={{ fontFamily: FONT, fontWeight: 600, fontSize: { xs: '0.78rem', md: '0.95rem' }, color: textColor, mb: 0.3, wordBreak: 'break-all' }}>
                       {c.value}
                     </Typography>
-                    <Typography sx={{ fontFamily: FONT, fontSize: { xs: '0.75rem', md: '0.82rem' }, color: 'text.secondary' }}>
+                    <Typography sx={{ fontFamily: FONT, fontSize: { xs: '0.75rem', md: '0.82rem' }, color: 'text.primary', opacity: 0.75 }}>
                       {c.sub}
                     </Typography>
                   </Box>

@@ -127,7 +127,7 @@ export default function About() {
             >
               <Typography
                 sx={{
-                  color: "text.secondary",
+                  color: "text.primary", opacity: 1,
                   fontFamily: FONT,
                   lineHeight: 1.95,
                   fontSize: "1.02rem",
@@ -225,7 +225,7 @@ export default function About() {
                     <Typography
                       sx={{
                         fontFamily: FONT,
-                        color: "text.secondary",
+                        color: "text.primary", opacity: 1,
                         fontSize: "0.9rem",
                         lineHeight: 1.75,
                       }}

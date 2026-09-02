@@ -67,7 +67,7 @@ export default function Experience() {
 
           {EXPERIENCE.map((exp, i) => (
             <Box key={i} sx={{ display: 'flex', gap: 3, mb: 4 }}>
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, flexShrink: 0, width: 42, height: 42, borderRadius: '50%', bgcolor: `${exp.color}18`, border: `2px solid ${exp.color}60`, alignItems: 'center', justifyContent: 'center', color: exp.color, zIndex: 1, mt: 0.5 }}>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, flexShrink: 0, width: 42, height: 42, borderRadius: '50%', bgcolor: `${exp.color}18`, border: `2px solid ${exp.color}60`, alignItems: 'center', justifyContent: 'center', color: 'primary.main', zIndex: 1, mt: 0.5 }}>
                 <exp.Icon sx={{ fontSize: 20 }} />
               </Box>
 
@@ -80,7 +80,7 @@ export default function Experience() {
                     )}
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', sm: 'flex-end' }, gap: 0.8 }}>
-                    <Chip label={exp.type} size="small" sx={{ bgcolor: `${exp.color}14`, color: exp.color, border: `1px solid ${exp.color}30`, fontFamily: FONT, fontSize: '0.72rem', fontWeight: 700 }} />
+                    <Chip label={exp.type} size="small" sx={{ bgcolor: `${exp.color}14`, color: 'primary.main', border: `1px solid ${exp.color}30`, fontFamily: FONT, fontSize: '0.72rem', fontWeight: 700 }} />
                     <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: FONT, fontWeight: 500 }}>{exp.period}</Typography>
                   </Box>
                 </Box>
@@ -88,7 +88,7 @@ export default function Experience() {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2.5 }}>
                   {exp.bullets.map((b, j) => (
                     <Box key={j} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.2 }}>
-                      <FiberManualRecordIcon sx={{ fontSize: 8, color: exp.color, mt: 0.7, flexShrink: 0 }} />
+                      <FiberManualRecordIcon sx={{ fontSize: 8, color: 'primary.main', mt: 0.7, flexShrink: 0 }} />
                       <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: '0.88rem', lineHeight: 1.7 }}>{b}</Typography>
                     </Box>
                   ))}
@@ -97,7 +97,7 @@ export default function Experience() {
                 {exp.tags.length > 0 && (
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8 }}>
                     {exp.tags.map(t => (
-                      <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${exp.color}10`, color: exp.color, border: `1px solid ${exp.color}28`, fontSize: '0.71rem', fontWeight: 600 }} />
+                      <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${exp.color}10`, color: 'primary.main', border: `1px solid ${exp.color}28`, fontSize: '0.71rem', fontWeight: 600 }} />
                     ))}
                   </Box>
                 )}

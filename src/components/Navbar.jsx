@@ -81,7 +81,7 @@ export default function Navbar() {
               {NAV_DESKTOP.map(link => (
                 <Button key={link} onClick={() => go(link)} sx={{
                   fontFamily: FONT, fontWeight: 500,
-                  color: 'text.secondary', textTransform: 'none',
+                  color: 'text.primary', opacity: 0.75, textTransform: 'none',
                   borderRadius: 2, px: 1.6, py: 0.7,
                   fontSize: '0.88rem', minWidth: 'auto',
                   '&:hover': { color: 'primary.main', bgcolor: 'rgba(233,30,140,0.07)' },

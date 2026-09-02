@@ -66,7 +66,7 @@ const FILTERS = ['All', 'Frontend', 'Backend', 'Tools', 'Other']
 const paginationSx = {
   '& .MuiPaginationItem-root': {
     fontFamily: FONT, fontWeight: 600,
-    color: 'text.secondary',
+    color: 'text.primary', opacity: 0.75,
     border: '1px solid rgba(233,30,140,0.2)',
     '&:hover': { bgcolor: 'rgba(233,30,140,0.08)', borderColor: 'primary.main', color: 'primary.main' },
   },
@@ -98,13 +98,13 @@ export default function Skills() {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
-            <AutoAwesomeIcon sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
+            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               Technical Skills
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, mb: 4 }}>
-            My <Box component="span" sx={{ color: isDark ? '#f06ab3' : '#a8005e' }}>Skills</Box>
+            My <Box component="span" sx={{ color: 'primary.main' }}>Skills</Box>
           </Typography>
 
         
@@ -113,8 +113,8 @@ export default function Skills() {
               <Button key={f} onClick={() => handleFilter(f)} variant={active === f ? 'contained' : 'outlined'}
                 sx={{ fontFamily: FONT, fontWeight: 600, textTransform: 'none', borderRadius: 3, px: 2.5, py: 0.8, fontSize: '0.88rem',
                   ...(active === f
-                    ? { bgcolor: isDark ? '#e91e8c' : '#a8005e', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: isDark ? '#c2185b' : '#8b0038' } }
-                    : { borderColor: 'rgba(233,30,140,0.3)', color: isDark ? '#f06ab3' : '#a8005e', '&:hover': { borderColor: isDark ? '#f06ab3' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)' } }
+                    ? { bgcolor: 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
+                    : { borderColor: 'rgba(233,30,140,0.3)', color: 'primary.main', '&:hover': { borderColor: isDark ? '#f06ab3' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)' } }
                   ), transition: 'all 0.2s',
                 }}>
                 {f}

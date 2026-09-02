@@ -27,7 +27,7 @@ export default function Footer() {
         </svg>
       </Box>
 
-      <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: '0.82rem' }}>
+      <Typography sx={{ fontFamily: FONT, color: 'text.primary', opacity: 0.75, fontSize: '0.82rem' }}>
         Esraa Mahmoud - Fullstack Developer
       </Typography>
     </Box>
