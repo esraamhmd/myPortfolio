@@ -116,14 +116,14 @@ export default function Training() {
                   <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 0.6 }}>
                       <Chip label={t.type} size="small" sx={{ bgcolor: 'transparent', color: 'primary.main', border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
-                      <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: FONT, fontWeight: 500 }}>{t.period}</Typography>
+                      <Typography variant="caption" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 500 }}>{t.period}</Typography>
                     </Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: '0.97rem', color: 'text.primary', mb: 0.3, lineHeight: 1.4 }}>{t.role}</Typography>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 600, color: textColor, fontSize: '0.88rem' }}>{t.company}</Typography>
                   </Box>
                 </Box>
 
-                <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: '0.86rem', lineHeight: 1.75, mb: t.tags.length ? 2 : 0 }}>
+                <Typography sx={{ fontFamily: FONT, color: 'text.primary', fontSize: '0.86rem', lineHeight: 1.75, mb: t.tags.length ? 2 : 0 }}>
                   {t.description}
                 </Typography>
 

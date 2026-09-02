@@ -66,7 +66,7 @@ const FILTERS = ['All', 'Frontend', 'Backend', 'Tools', 'Other']
 const paginationSx = {
   '& .MuiPaginationItem-root': {
     fontFamily: FONT, fontWeight: 600,
-    color: 'text.primary', opacity: 0.75,
+    color: 'text.primary',
     border: '1px solid rgba(233,30,140,0.2)',
     '&:hover': { bgcolor: 'rgba(233,30,140,0.08)', borderColor: 'primary.main', color: 'primary.main' },
   },

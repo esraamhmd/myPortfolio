@@ -89,7 +89,7 @@ const REPOS_URL = 'https://github.com/esraamhmd?tab=repositories'
 
 const paginationSx = {
   '& .MuiPaginationItem-root': {
-    fontFamily: FONT, fontWeight: 600, color: 'text.secondary',
+    fontFamily: FONT, fontWeight: 600, color: 'text.primary',
     border: '1px solid rgba(233,30,140,0.2)',
     '&:hover': { bgcolor: 'rgba(233,30,140,0.08)', borderColor: 'primary.main', color: 'primary.main' },
   },
@@ -177,7 +177,7 @@ export default function Projects() {
                 <Typography sx={{ color: textColor, fontFamily: FONT, fontWeight: 700, fontSize: '1rem', mb: 0.6, lineHeight: 1.35 }}>
                   {p.title}
                 </Typography>
-                <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.82rem', lineHeight: 1.6, mb: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontSize: '0.82rem', lineHeight: 1.6, mb: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {p.desc}
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.6 }}>
@@ -281,7 +281,7 @@ export default function Projects() {
                 <Box sx={{ px: 3, pb: 4, pt: 2 }}>
                   <Chip label={modal.cat} size="small" sx={{ mb: 2.5, bgcolor: `${modal.color}14`, color: tc(modal.color), border: `1px solid ${modal.color}30`, fontFamily: FONT, fontWeight: 700 }} />
                   <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: 'text.primary', fontSize: '0.95rem', mb: 1 }}>About this project</Typography>
-                  <Typography sx={{ fontFamily: FONT, color: 'text.secondary', lineHeight: 1.9, fontSize: '0.93rem', mb: 3 }}>{modal.desc}</Typography>
+                  <Typography sx={{ fontFamily: FONT, color: 'text.primary', lineHeight: 1.9, fontSize: '0.93rem', mb: 3 }}>{modal.desc}</Typography>
                   <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: 'text.primary', fontSize: '0.95rem', mb: 1.5 }}>Tech Stack</Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.9, mb: 3.5 }}>
                     {modal.tags.map(t => (
