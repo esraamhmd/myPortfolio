@@ -113,7 +113,7 @@ export default function About() {
             <Paper
               elevation={0}
               sx={{
-                bgcolor: "rgba(233,30,140,0.05)",
+                bgcolor: "background.paper",
                 border: "1px solid rgba(233,30,140,0.20)",
                 borderRadius: 4,
                 p: { xs: 3, md: 4 },
@@ -133,16 +133,13 @@ export default function About() {
                   fontSize: "1.02rem",
                 }}
               >
-                Computer Science and AI graduate, among the top students in my
-                class, passionate about Full-Stack  Development.
-                Skilled in Next.js, React.js, TypeScript, Node.js, Express.js,
-                MongoDB, Tailwind CSS, Docker, and AWS. Experienced in building
-                responsive web applications and RESTful APIs. Also working as a
-                Freelance Frontend Developer, delivering responsive and
-                user-focused web solutions for clients. Completed React.js
-                training at ITI and a Frontend Development Diploma at Route
-                Academy. Seeking a Full-Stack or Frontend Developer opportunity
-                to contribute to innovative web solutions.
+                Computer Science and AI graduate, top of my class, passionate about Full-Stack Development.
+                Skilled in Next.js, React.js, TypeScript, Node.js, Express.js, MongoDB, Tailwind CSS, Docker, and AWS.
+                Interned at SpaceTech as a Software Engineer, contributing to real products in a team environment using GitHub Organizations and Jira.
+                Mentee at Deloitte's NextStep Mentorship Program via the Innovation Hub.
+                Freelance Frontend Developer delivering responsive, user-focused web solutions.
+                Trained at ITI (React.js) and Route Academy (Frontend Diploma).
+                Seeking a Full-Stack or Frontend role to build innovative web solutions.
               </Typography>
             </Paper>
           </Box>

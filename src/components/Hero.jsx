@@ -83,7 +83,7 @@ export default function Hero() {
               Esraa Mahmoud
             </Typography>
 
-            <Typography variant="h4" sx={{
+            <Typography variant="h2" sx={{
               fontFamily: FONT, fontWeight: 700,
               mb: 5, color: 'primary.main',
               textShadow: '0 2px 14px rgba(233,30,140,0.28)',

@@ -27,14 +27,18 @@ export default function App() {
   const theme = useMemo(() => createTheme({
     palette: {
       mode,
-      primary: { main: '#e91e8c', dark: '#c2185b', light: '#ff6ec7' },
+      primary: {
+        main:  mode === 'dark' ? '#e91e8c' : '#a8005e',
+        dark:  mode === 'dark' ? '#c2185b' : '#8b0038',
+        light: mode === 'dark' ? '#ff6ec7' : '#d4006e',
+      },
       background: {
         default: mode === 'dark' ? '#0a0a14' : '#fdf0f7',
         paper:   mode === 'dark' ? '#11111e' : '#ffffff',
       },
       text: {
         primary:   mode === 'dark' ? '#f0e6ff' : '#1a0a2e',
-        secondary: mode === 'dark' ? '#c4aee8' : '#4a2d6a',
+        secondary: mode === 'dark' ? '#c4aee8' : '#2d1045',
       },
     },
     typography: {

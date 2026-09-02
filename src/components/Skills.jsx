@@ -5,6 +5,27 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 const FONT = '"Plus Jakarta Sans", sans-serif'
 const PER_PAGE = 8
 
+function accessibleColor(hex, isDark) {
+ 
+  const lightNeedsdarker = ['#ffffff', '#f7df1e', '#61dafb', '#38bdf8', '#ff4154', '#ff6c37', '#45ba4b', '#68a063', '#47a248', '#3ecf8e']
+  if (!isDark && lightNeedsdarker.includes(hex.toLowerCase())) {
+    const map = {
+      '#ffffff':  '#555555',
+      '#f7df1e':  '#7a6800',
+      '#61dafb':  '#006b8a',
+      '#38bdf8':  '#005f82',
+      '#ff4154':  '#b30020',
+      '#ff6c37':  '#b03a00',
+      '#45ba4b':  '#1e6b22',
+      '#68a063':  '#2d5c2a',
+      '#47a248':  '#1e6b22',
+      '#3ecf8e':  '#007a4d',
+    }
+    return map[hex.toLowerCase()] ?? hex
+  }
+  return hex
+}
+
 const ALL_SKILLS = [
   { name: 'React.js',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',                color: '#61dafb', url: 'https://react.dev',                                          cat: 'Frontend' },
   { name: 'Next.js',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',              color: '#ffffff', url: 'https://nextjs.org/docs',                                   cat: 'Frontend' },
@@ -23,8 +44,8 @@ const ALL_SKILLS = [
   { name: 'MongoDB',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',            color: '#47a248', url: 'https://www.mongodb.com/docs',                             cat: 'Backend'  },
   { name: 'RESTful API',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',            color: '#009688', url: 'https://restfulapi.net',                                    cat: 'Backend'  },
   { name: 'Supabase',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',          color: '#3ecf8e', url: 'https://supabase.com/docs',                                 cat: 'Backend'  },
-  { name: 'PostgreSQL',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',        color: '#336791', url: 'https://www.postgresql.org/docs',                           cat: 'Backend'  },
-  { name: 'JWT',            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg',                color: '#d63aff', url: 'https://jwt.io/introduction',                               cat: 'Backend'  },
+  { name: 'PostgreSQL',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',      color: '#336791', url: 'https://www.postgresql.org/docs',                           cat: 'Backend'  },
+  { name: 'JWT',            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg',                  color: '#d63aff', url: 'https://jwt.io/introduction',                               cat: 'Backend'  },
   { name: 'Playwright',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg',      color: '#45ba4b', url: 'https://playwright.dev',                                    cat: 'Tools'    },
   { name: 'Jest',           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',                     color: '#c21325', url: 'https://jestjs.io/docs',                                    cat: 'Tools'    },
   { name: 'AWS',            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', color: '#ff9900', url: 'https://docs.aws.amazon.com',               cat: 'Tools'    },
@@ -36,7 +57,6 @@ const ALL_SKILLS = [
   { name: 'Axios',          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg',                   color: '#5a29e4', url: 'https://axios-http.com',                                    cat: 'Frontend' },
   { name: 'Zod',            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',      color: '#3068b7', url: 'https://zod.dev',                                           cat: 'Backend'  },
   { name: 'Recharts',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg',                  color: '#22b5bf', url: 'https://recharts.org',                                      cat: 'Frontend' },
-  
   { name: 'Python',         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',              color: '#3776ab', url: 'https://docs.python.org/3',                                 cat: 'Other'    },
   { name: 'C++',            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',        color: '#00599c', url: 'https://cplusplus.com/doc/tutorial',                        cat: 'Other'    },
 ]
@@ -78,23 +98,23 @@ export default function Skills() {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
-            <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <AutoAwesomeIcon sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontSize: 18 }} />
+            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? '#f06ab3' : '#a8005e', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               Technical Skills
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, mb: 4 }}>
-            My <Box component="span" sx={{ color: 'primary.main' }}>Skills</Box>
+            My <Box component="span" sx={{ color: isDark ? '#f06ab3' : '#a8005e' }}>Skills</Box>
           </Typography>
 
-          {/* Filter buttons */}
+        
           <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 1.5 }}>
             {FILTERS.map(f => (
               <Button key={f} onClick={() => handleFilter(f)} variant={active === f ? 'contained' : 'outlined'}
                 sx={{ fontFamily: FONT, fontWeight: 600, textTransform: 'none', borderRadius: 3, px: 2.5, py: 0.8, fontSize: '0.88rem',
                   ...(active === f
-                    ? { bgcolor: 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
-                    : { borderColor: 'rgba(233,30,140,0.3)', color: 'primary.main', '&:hover': { borderColor: 'primary.main', bgcolor: 'rgba(233,30,140,0.07)' } }
+                    ? { bgcolor: isDark ? '#e91e8c' : '#a8005e', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: isDark ? '#c2185b' : '#8b0038' } }
+                    : { borderColor: 'rgba(233,30,140,0.3)', color: isDark ? '#f06ab3' : '#a8005e', '&:hover': { borderColor: isDark ? '#f06ab3' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)' } }
                   ), transition: 'all 0.2s',
                 }}>
                 {f}
@@ -103,21 +123,24 @@ export default function Skills() {
           </Box>
         </Box>
 
-        {/* Grid */}
+     
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', sm: 'repeat(3,1fr)', md: 'repeat(4,1fr)' }, gap: 3, mb: 6 }}>
-          {paginated.map(skill => (
-            <Paper key={skill.name} component="a" href={skill.url} target="_blank" rel="noopener noreferrer" elevation={0}
-              sx={{ bgcolor: 'background.paper', border: '1px solid', borderColor: `${skill.color}1e`, borderRadius: 3, p: 3.5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1.8, cursor: 'pointer', textDecoration: 'none', boxShadow: `0 4px 20px ${skill.color}0d`,
-                '&:hover': { borderColor: `${skill.color}70`, transform: 'translateY(-10px)', boxShadow: `0 18px 50px ${skill.color}30` }, transition: 'all 0.25s',
-              }}>
-              <Box sx={{ width: 70, height: 70, borderRadius: 2.5, bgcolor: `${skill.color}12`, border: '1.5px solid', borderColor: `${skill.color}28`, display: 'flex', alignItems: 'center', justifyContent: 'center', p: 1.4, boxShadow: `0 4px 18px ${skill.color}1a` }}>
-                <img src={skill.icon} alt={skill.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={e => { e.target.style.opacity = 0.3 }} />
-              </Box>
-              <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 600, fontSize: '0.88rem', textAlign: 'center' }}>
-                {skill.name}
-              </Typography>
-            </Paper>
-          ))}
+          {paginated.map(skill => {
+            const textColor = accessibleColor(skill.color, isDark)
+            return (
+              <Paper key={skill.name} component="a" href={skill.url} target="_blank" rel="noopener noreferrer" elevation={0}
+                sx={{ bgcolor: 'background.paper', border: '1px solid', borderColor: `${skill.color}1e`, borderRadius: 3, p: 3.5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1.8, cursor: 'pointer', textDecoration: 'none', boxShadow: `0 4px 20px ${skill.color}0d`,
+                  '&:hover': { borderColor: `${skill.color}70`, transform: 'translateY(-10px)', boxShadow: `0 18px 50px ${skill.color}30` }, transition: 'all 0.25s',
+                }}>
+                <Box sx={{ width: 70, height: 70, borderRadius: 2.5, bgcolor: `${skill.color}12`, border: '1.5px solid', borderColor: `${skill.color}28`, display: 'flex', alignItems: 'center', justifyContent: 'center', p: 1.4, boxShadow: `0 4px 18px ${skill.color}1a` }}>
+                  <img src={skill.icon} alt={skill.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={e => { e.target.style.opacity = 0.3 }} />
+                </Box>
+                <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 600, fontSize: '0.88rem', textAlign: 'center' }}>
+                  {skill.name}
+                </Typography>
+              </Paper>
+            )
+          })}
         </Box>
 
         {/* Pagination */}

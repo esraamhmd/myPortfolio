@@ -11,8 +11,8 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import { ColorModeContext } from '../App'
 
 
-const NAV_DESKTOP = ['Home', 'About','Training', 'Skills', 'Projects', 'Contact']
-const NAV_ALL = ['Home', 'About', 'Training',, 'Education', 'Skills', 'Projects', 'Certificates', 'Contact']
+const NAV_DESKTOP = ['Home','Experience','Training', 'Skills', 'Projects', 'Contact']
+const NAV_ALL = ['Home', 'About', 'Experience','Training',, 'Education', 'Skills', 'Projects', 'Certificates', 'Contact']
 const FONT = '"Plus Jakarta Sans", sans-serif'
 
 export default function Navbar() {
@@ -137,7 +137,7 @@ export default function Navbar() {
         </Box>
       </AppBar>
 
-      {/* Drawer — all links */}
+     
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}
         PaperProps={{ sx: {
           bgcolor: dark ? 'background.default' : '#fdf0f7',

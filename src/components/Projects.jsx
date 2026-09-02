@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   Box, Typography, Container, Paper, Chip,
-  Button, Modal, IconButton, Pagination
+  Button, Modal, IconButton, Pagination, useTheme
 } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LaunchIcon from '@mui/icons-material/Launch'
@@ -15,6 +15,13 @@ const CDN = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}`
 
 const PER_PAGE = 6
 const COLORS = ['#722F99', '#f72585', '#06d6a0', '#8DB355']
+
+const ACCESSIBLE = {
+  '#722F99': { dark: '#b06fd4', light: '#5a1a80' },
+  '#f72585': { dark: '#f96aab', light: '#9c0055' },
+  '#06d6a0': { dark: '#06d6a0', light: '#007a5a' },
+  '#8DB355': { dark: '#8DB355', light: '#4a6e1a' },
+}
 
 const PROJECTS = [
   {
@@ -94,6 +101,9 @@ const paginationSx = {
 }
 
 export default function Projects() {
+  const theme = useTheme()
+  const isDark = theme.palette.mode === 'dark'
+  const tc = (color) => ACCESSIBLE[color]?.[isDark ? 'dark' : 'light'] ?? color
   const [active, setActive] = useState('All')
   const [modal,  setModal]  = useState(null)
   const [page,   setPage]   = useState(1)
@@ -136,7 +146,9 @@ export default function Projects() {
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', lg: 'repeat(3,1fr)' }, gap: 3.5, mb: 6, alignItems: 'start' }}>
-          {paginated.map((p, i) => (
+          {paginated.map((p, i) => {
+            const textColor = tc(p.color)
+            return (
             <Paper key={i} elevation={0} sx={{
               bgcolor: 'background.paper',
               border: `1px solid ${p.color}28`,
@@ -162,7 +174,7 @@ export default function Projects() {
               </Box>
 
               <Box sx={{ px: 3, pt: 2, pb: 1 }}>
-                <Typography sx={{ color: p.color, fontFamily: FONT, fontWeight: 700, fontSize: '1rem', mb: 0.6, lineHeight: 1.35 }}>
+                <Typography sx={{ color: textColor, fontFamily: FONT, fontWeight: 700, fontSize: '1rem', mb: 0.6, lineHeight: 1.35 }}>
                   {p.title}
                 </Typography>
                 <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.82rem', lineHeight: 1.6, mb: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
@@ -170,9 +182,9 @@ export default function Projects() {
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.6 }}>
                   {p.tags.slice(0, 4).map(t => (
-                    <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${p.color}14`, color: p.color, border: `1px solid ${p.color}35`, fontSize: '0.69rem', fontWeight: 700, height: 22 }} />
+                    <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${p.color}14`, color: textColor, border: `1px solid ${p.color}35`, fontSize: '0.69rem', fontWeight: 700, height: 22 }} />
                   ))}
-                  {p.tags.length > 4 && <Chip label={`+${p.tags.length - 4}`} size="small" sx={{ fontFamily: FONT, bgcolor: `${p.color}10`, color: p.color, fontSize: '0.69rem', fontWeight: 700, height: 22 }} />}
+                  {p.tags.length > 4 && <Chip label={`+${p.tags.length - 4}`} size="small" sx={{ fontFamily: FONT, bgcolor: `${p.color}10`, color: textColor, fontSize: '0.69rem', fontWeight: 700, height: 22 }} />}
                 </Box>
               </Box>
 
@@ -180,13 +192,15 @@ export default function Projects() {
 
               <Box sx={{ px: 2.5, pt: 0, pb: 1.5, display: 'flex', gap: 1, alignItems: 'center' }}>
                 <Button component="a" href={p.github} target="_blank" rel="noopener noreferrer"
+                  aria-label={`GitHub repository for ${p.title}`}
                   startIcon={<GitHubIcon fontSize="small" />} size="small" variant="outlined"
-                  sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, borderColor: `${p.color}50`, color: p.color, textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
-                    '&:hover': { borderColor: p.color, bgcolor: `${p.color}18`, color: p.color }, transition: 'all 0.22s' }}>
+                  sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, borderColor: `${p.color}50`, color: textColor, textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
+                    '&:hover': { borderColor: p.color, bgcolor: `${p.color}18`, color: textColor }, transition: 'all 0.22s' }}>
                   GitHub
                 </Button>
                 {p.demo && (
                   <Button component="a" href={p.demo} target="_blank" rel="noopener noreferrer"
+                    aria-label={`Live demo for ${p.title}`}
                     startIcon={<LaunchIcon fontSize="small" />} size="small" variant="contained"
                     sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, bgcolor: p.color, color: '#fff', textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
                       boxShadow: `0 3px 12px ${p.color}40`,
@@ -195,13 +209,14 @@ export default function Projects() {
                   </Button>
                 )}
                 <IconButton onClick={() => setModal(p)} size="small" aria-label={`View details for ${p.title}`}
-                  sx={{ color: p.color, border: `1px solid ${p.color}40`, borderRadius: 2, width: 34, height: 34,
+                  sx={{ color: textColor, border: `1px solid ${p.color}40`, borderRadius: 2, width: 34, height: 34,
                     '&:hover': { bgcolor: `${p.color}18`, borderColor: p.color, transform: 'scale(1.15)' }, transition: 'all 0.22s' }}>
                   <OpenInFullIcon sx={{ fontSize: 16 }} />
                 </IconButton>
               </Box>
             </Paper>
-          ))}
+            )
+          })}
         </Box>
 
         {pageCount > 1 && (
@@ -213,6 +228,7 @@ export default function Projects() {
         <Box sx={{ textAlign: 'center' }}>
           <Button component="a" href={REPOS_URL} target="_blank" rel="noopener noreferrer"
             variant="outlined" size="large" endIcon={<ArrowForwardIcon />}
+            aria-label="View more projects on GitHub"
             sx={{ fontFamily: FONT, fontWeight: 700, borderColor: 'rgba(233,30,140,0.4)', color: 'primary.main', px: 4, py: 1.3, borderRadius: 3, textTransform: 'none', fontSize: '0.95rem',
               '&:hover': { borderColor: 'primary.main', bgcolor: 'rgba(233,30,140,0.07)', transform: 'translateY(-2px)' }, transition: 'all 0.25s' }}>
             More on GitHub
@@ -263,23 +279,25 @@ export default function Projects() {
                 </Box>
 
                 <Box sx={{ px: 3, pb: 4, pt: 2 }}>
-                  <Chip label={modal.cat} size="small" sx={{ mb: 2.5, bgcolor: `${modal.color}14`, color: modal.color, border: `1px solid ${modal.color}30`, fontFamily: FONT, fontWeight: 700 }} />
+                  <Chip label={modal.cat} size="small" sx={{ mb: 2.5, bgcolor: `${modal.color}14`, color: tc(modal.color), border: `1px solid ${modal.color}30`, fontFamily: FONT, fontWeight: 700 }} />
                   <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: 'text.primary', fontSize: '0.95rem', mb: 1 }}>About this project</Typography>
                   <Typography sx={{ fontFamily: FONT, color: 'text.secondary', lineHeight: 1.9, fontSize: '0.93rem', mb: 3 }}>{modal.desc}</Typography>
                   <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: 'text.primary', fontSize: '0.95rem', mb: 1.5 }}>Tech Stack</Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.9, mb: 3.5 }}>
                     {modal.tags.map(t => (
-                      <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${modal.color}12`, color: modal.color, border: `1px solid ${modal.color}30`, fontSize: '0.76rem', fontWeight: 700 }} />
+                      <Chip key={t} label={t} size="small" sx={{ fontFamily: FONT, bgcolor: `${modal.color}12`, color: tc(modal.color), border: `1px solid ${modal.color}30`, fontSize: '0.76rem', fontWeight: 700 }} />
                     ))}
                   </Box>
                   <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                     <Button component="a" href={modal.github} target="_blank" rel="noopener noreferrer"
+                      aria-label={`GitHub repository for ${modal.title}`}
                       startIcon={<GitHubIcon />} variant="outlined"
                       sx={{ fontFamily: FONT, fontWeight: 600, borderColor: `${modal.color}50`, color: modal.color, textTransform: 'none', borderRadius: 3, px: 3,
                         '&:hover': { borderColor: modal.color, bgcolor: `${modal.color}18`, color: modal.color }, transition: 'all 0.22s' }}>
                       GitHub
                     </Button>
                     <Button component="a" href={modal.demo || modal.github} target="_blank" rel="noopener noreferrer"
+                      aria-label={`Live demo for ${modal.title}`}
                       startIcon={<LaunchIcon />} variant="contained"
                       sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: modal.color, color: '#fff', textTransform: 'none', borderRadius: 3, px: 3,
                         boxShadow: `0 4px 16px ${modal.color}40`,
