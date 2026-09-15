@@ -8,7 +8,7 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 const FONT = '"Plus Jakarta Sans", sans-serif'
 
 const ACCESSIBLE = {
-  '#e91e8c': { dark: '#f06ab3', light: '#a8005e' },
+  '#e91e8c': { dark: '#e91e8c', light: '#a8005e' },
   '#ff6ec7': { dark: '#f06ab3', light: '#9c0060' },
   '#c2185b': { dark: '#e8527a', light: '#8b0038' },
   '#9c27b0': { dark: '#ce6fdd', light: '#6a0080' },
