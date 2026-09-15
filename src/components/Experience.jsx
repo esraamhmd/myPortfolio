@@ -71,7 +71,7 @@ export default function Experience() {
                 <exp.Icon sx={{ fontSize: 20 }} />
               </Box>
 
-              <Paper elevation={0} sx={{ flex: 1, bgcolor: 'background.paper', border: '1px solid', borderColor: `${exp.color}22`, borderRadius: 4, p: { xs: 3, md: 4 }, boxShadow: `0 4px 24px ${exp.color}0f`, '&:hover': { borderColor: `${exp.color}60`, transform: 'translateX(6px)', boxShadow: `0 12px 40px ${exp.color}18` }, transition: 'all 0.25s' }}>
+              <Paper elevation={0} sx={{ flex: 1, bgcolor: 'background.paper', border: '1px solid', borderColor: `${exp.color}22`, borderRadius: 4, p: { xs: 3, md: 4 }, boxShadow: `0 4px 24px ${exp.color}0f`, background: `radial-gradient(ellipse at top right, ${exp.color}0a 0%, transparent 60%), background.paper`, '&:hover': { borderColor: `${exp.color}60`, transform: 'translateX(6px)', boxShadow: `0 12px 40px ${exp.color}18` }, transition: 'all 0.25s' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1.5, mb: 2 }}>
                   <Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 800, fontSize: '1.15rem', color: 'text.primary', mb: 0.3 }}>{exp.role}</Typography>
@@ -88,7 +88,7 @@ export default function Experience() {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2.5 }}>
                   {exp.bullets.map((b, j) => (
                     <Box key={j} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.2 }}>
-                      <FiberManualRecordIcon sx={{ fontSize: 8, color: 'primary.main', mt: 0.7, flexShrink: 0 }} />
+                      <FiberManualRecordIcon sx={{ fontSize: 8, color: exp.color, mt: 0.7, flexShrink: 0 }} />
                       <Typography sx={{ fontFamily: FONT, color: 'text.secondary', fontSize: '0.88rem', lineHeight: 1.7 }}>{b}</Typography>
                     </Box>
                   ))}

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, useTheme, Typography, Container, Paper, Chip } from '@mui/material'
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 
 const FONT = '"Plus Jakarta Sans", sans-serif'
-
 
 const ACCESSIBLE = {
   '#e91e8c': { dark: '#f06ab3', light: '#a8005e' },
@@ -22,6 +22,7 @@ const TRAINING = [
     period: 'Aug 2026 - 1 Month',
     color: '#e91e8c',
     isDeloitte: true,
+    Icon: EmojiEventsIcon,
     description: 'Software Engineering Mentee at Deloitte NextStep Mentorship Program, Deloitte Innovation Hub, gaining industry insights and career guidance from Deloitte professionals.',
     tags: [],
   },
@@ -31,6 +32,7 @@ const TRAINING = [
     company: 'Information Technology Institute (ITI)',
     period: 'Jul 2024 – Sep 2024',
     color: '#ff6ec7',
+    Icon: RocketLaunchIcon,
     description: 'Intensive summer training program focused on modern frontend development using React.js. Covered components, hooks, state management, and building real-world responsive web applications.',
     tags: ['React.js', 'React Router', 'JavaScript', 'CSS', 'HTML5', 'Bootstrap'],
   },
@@ -40,6 +42,7 @@ const TRAINING = [
     company: 'Route Academy',
     period: 'Jan 2024 – Apr 2024',
     color: '#c2185b',
+    Icon: LocalLibraryIcon,
     description: 'Comprehensive frontend development diploma covering modern web technologies. Built multiple projects applying responsive design principles, JavaScript logic, and React.js component architecture.',
     tags: ['React.js', 'Redux', 'Axios', 'JavaScript', 'TypeScript', 'CSS', 'HTML5', 'Bootstrap'],
   },
@@ -49,6 +52,7 @@ const TRAINING = [
     company: 'Route Academy',
     period: 'Jul 2023 – Nov 2023',
     color: '#9c27b0',
+    Icon: LocalLibraryIcon,
     description: 'Foundational computer science diploma covering core programming concepts, object-oriented design, and problem solving using Java and C++. Built a strong base for software engineering.',
     tags: ['Java', 'C++', 'OOP', 'Problem Solving', 'Software Development'],
   },
@@ -103,19 +107,13 @@ export default function Training() {
                 transition: 'all 0.25s',
               }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
-                  {t.isDeloitte ? (
-                    <Box sx={{ width: 52, height: 52, borderRadius: 2, flexShrink: 0, bgcolor: 'rgba(233,30,140,0.12)', border: '1.5px solid rgba(233,30,140,0.38)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(233,30,140,0.20)' }}>
-                      <EmojiEventsIcon sx={{ color: 'primary.main', fontSize: 26 }} />
-                    </Box>
-                  ) : (
-                    <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: 'transparent', border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, flexShrink: 0 }}>
-                      <LocalLibraryIcon sx={{ fontSize: 24 }} />
-                    </Box>
-                  )}
+                  <Box sx={{ width: 52, height: 52, borderRadius: 2, flexShrink: 0, bgcolor: `${t.color}12`, border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, boxShadow: `0 4px 14px ${t.color}20` }}>
+                    <t.Icon sx={{ fontSize: 26 }} />
+                  </Box>
 
                   <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 0.6 }}>
-                      <Chip label={t.type} size="small" sx={{ bgcolor: 'transparent', color: 'primary.main', border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
+                      <Chip label={t.type} size="small" sx={{ bgcolor: `${t.color}12`, color: textColor, border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
                       <Typography variant="caption" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 500 }}>{t.period}</Typography>
                     </Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: '0.97rem', color: 'text.primary', mb: 0.3, lineHeight: 1.4 }}>{t.role}</Typography>
@@ -130,7 +128,7 @@ export default function Training() {
                 {t.tags.length > 0 && (
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.7 }}>
                     {t.tags.map(tag => (
-                      <Chip key={tag} label={tag} size="small" sx={{ fontFamily: FONT, bgcolor: 'transparent', color: 'primary.main', border: `1px solid ${t.color}28`, fontSize: '0.69rem', fontWeight: 600, height: 20 }} />
+                      <Chip key={tag} label={tag} size="small" sx={{ fontFamily: FONT, bgcolor: `${t.color}10`, color: textColor, border: `1px solid ${t.color}28`, fontSize: '0.69rem', fontWeight: 600, height: 20 }} />
                     ))}
                   </Box>
                 )}
