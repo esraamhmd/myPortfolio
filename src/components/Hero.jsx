@@ -20,7 +20,7 @@ const css = `
   src: url('/assets/fonts/Fredoka-SemiBold.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   size-adjust: 100%;
   ascent-override: 90%;
   descent-override: 22%;

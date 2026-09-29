@@ -15,8 +15,8 @@ const CDN = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}`
 
 const PER_PAGE = 6
 
-const BTN_TEXT = { '#722F99': '#ffffff', '#f72585': '#0a0a14', '#06d6a0': '#0a0a14', '#8DB355': '#0a0a14' }
-const PINK_BTN = '#dd1682'
+const BTN_BG = { '#722F99': '#722F99', '#f72585': '#e1086b', '#06d6a0': '#048261', '#8DB355': '#627e38' }
+const PINK_BTN = '#dd1682' 
 const COLORS = ['#722F99', '#f72585', '#06d6a0', '#8DB355']
 
 const ACCESSIBLE = {
@@ -205,9 +205,9 @@ export default function Projects() {
                   <Button component="a" href={p.demo} target="_blank" rel="noopener noreferrer"
                     aria-label={`Live demo for ${p.title}`}
                     startIcon={<LaunchIcon fontSize="small" />} size="small" variant="contained"
-                    sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, bgcolor: p.color, color: BTN_TEXT[p.color] || '#fff', textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
+                    sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, bgcolor: BTN_BG[p.color] || p.color, color: '#fff', textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
                       boxShadow: `0 3px 12px ${p.color}40`,
-                      '&:hover': { bgcolor: p.color, filter: 'brightness(1.18)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
+                      '&:hover': { bgcolor: BTN_BG[p.color] || p.color, filter: 'brightness(1.08)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
                     Live Demo
                   </Button>
                 )}
@@ -302,9 +302,9 @@ export default function Projects() {
                     <Button component="a" href={modal.demo || modal.github} target="_blank" rel="noopener noreferrer"
                       aria-label={`Live demo for ${modal.title}`}
                       startIcon={<LaunchIcon />} variant="contained"
-                      sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: modal.color, color: BTN_TEXT[modal.color] || '#fff', textTransform: 'none', borderRadius: 3, px: 3,
+                      sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: BTN_BG[modal.color] || modal.color, color: '#fff', textTransform: 'none', borderRadius: 3, px: 3,
                         boxShadow: `0 4px 16px ${modal.color}40`,
-                        '&:hover': { bgcolor: modal.color, filter: 'brightness(1.18)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
+                        '&:hover': { bgcolor: BTN_BG[modal.color] || modal.color, filter: 'brightness(1.08)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
                       Live Demo
                     </Button>
                   </Box>

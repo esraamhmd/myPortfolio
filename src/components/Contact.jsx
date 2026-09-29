@@ -71,13 +71,16 @@ export default function Contact() {
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          gap: { xs: 6, md: 8 },
+          gap: { xs: 0, md: 8 },
         }}>
 
           {/* Lottie */}
           <Box sx={{
             flex: '0 0 auto',
             width: { xs: '85%', sm: '55%', md: '40%' },
+            minHeight: { xs: 300, sm: 320, md: 380 },
+            
+            mb: { xs: -10, sm: -6, md: 0 },
             mx: { xs: 'auto', md: 0 },
             filter: 'drop-shadow(0 16px 48px rgba(233,30,140,0.22))',
             '&:hover': { transform: 'scale(1.03)' },
@@ -86,7 +89,7 @@ export default function Contact() {
             <DotLottieReact
               src="/assets/contact.lottie"
               autoplay loop
-              style={{ width: '100%', height: 'auto', minHeight: 380 }}
+              style={{ width: '100%', height: 'auto', minHeight: 'inherit' }}
             />
           </Box>
 
