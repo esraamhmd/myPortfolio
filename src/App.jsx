@@ -1,4 +1,4 @@
-import React, { useState, useMemo, createContext } from 'react'
+import React, { useState, useMemo, createContext, useCallback } from 'react'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -13,10 +13,13 @@ import Certificates from './components/Certificates'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import StarBackground from './components/StarBackground'
+import LoadingScreen from './components/LoadingScreen'
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {}, mode: 'dark' })
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
+  const handleDone = useCallback(() => setLoading(false), [])
   const [mode, setMode] = useState('dark')
 
   const colorMode = useMemo(() => ({
@@ -38,17 +41,17 @@ export default function App() {
       },
       text: {
         primary:   mode === 'dark' ? '#f0e6ff' : '#1a0a2e',
-        secondary: mode === 'dark' ? '#c4aee8' : '#2d1045',
+        secondary: mode === 'dark' ? '#d4c4f0' : '#3d1a5e',
       },
     },
     typography: {
-      fontFamily: '"Plus Jakarta Sans", sans-serif',
-      h1: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800 },
-      h2: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 700 },
-      h3: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 700 },
-      h4: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 600 },
-      h5: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 600 },
-      h6: { fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 600 },
+      fontFamily: '"Fredoka", sans-serif',
+      h1: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
+      h2: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
+      h3: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
+      h4: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
+      h5: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
+      h6: { fontFamily: '"Fredoka", sans-serif', fontWeight: 600 },
     },
     shape: { borderRadius: 12 },
     components: {
@@ -61,6 +64,9 @@ export default function App() {
             overflowX: 'hidden',
             backgroundColor: 'transparent',
           },
+          html: {
+            backgroundColor: mode === 'dark' ? '#0a0a14' : '#fdf0f7',
+          },
           body: {
             scrollBehavior: 'smooth',
             '&::-webkit-scrollbar': { width: 5 },
@@ -70,32 +76,40 @@ export default function App() {
         },
       },
       MuiPaper: { styleOverrides: { root: { backgroundImage: 'none' } } },
+      MuiChip: {
+        styleOverrides: {
+          label: {
+            fontWeight: 700,
+          },
+        },
+      },
     },
   }), [mode])
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+    <>
+      {loading && <LoadingScreen onDone={handleDone} />}
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
 
+          <StarBackground mode={mode} />
 
-        <StarBackground mode={mode} />
+          <Navbar />
+          <Hero />
+          <Stats />
+          <About />
+          <Experience/>
+          <Training />
+          <Education />
+          <Skills />
+          <Projects />
+          <Certificates />
+          <Contact />
+          <Footer />
 
-        <Navbar />
-        <Hero />
-        <Stats />
-        <About />
-        <Experience/>
-        <Training />
-        <Education />
-        
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Contact />
-        <Footer />
-
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </>
   )
 }

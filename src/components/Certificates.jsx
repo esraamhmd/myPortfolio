@@ -135,13 +135,13 @@ export default function Certificates() {
         <Box sx={{ textAlign: "center", mb: 6 }}>
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: "primary.main", fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: "primary.main", fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? "primary.main" : "#a8005e", fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               My Achievements
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: "text.primary", fontFamily: FONT, fontWeight: 800, fontSize: { xs: "2.2rem", md: "3rem" } }}>
             My{" "}
-            <Box component="span" sx={{ color: "primary.main" }}>Certificates</Box>
+            <Box component="span" sx={{ color: isDark ? "primary.main" : "#a8005e" }}>Certificates</Box>
           </Typography>
         </Box>
 
@@ -168,7 +168,7 @@ export default function Certificates() {
                     <Typography sx={{ color: textColor, fontFamily: FONT, fontWeight: 700, fontSize: "0.95rem", mb: 0.4, lineHeight: 1.3 }}>
                       {c.title}
                     </Typography>
-                    <Typography sx={{ color: "text.secondary", fontFamily: FONT, fontSize: "0.78rem", mb: 0.3 }}>
+                    <Typography sx={{ color: "text.primary", fontFamily: FONT, fontSize: "0.78rem", mb: 0.3 }}>
                       {c.issuer}
                     </Typography>
                   </Box>
@@ -217,14 +217,14 @@ export default function Certificates() {
                       onTouchMove={(e) => { if (!dragStart.current) return; const t = e.touches[0]; setPos({ x: t.clientX - dragStart.current.x, y: t.clientY - dragStart.current.y }) }}
                       onTouchEnd={() => setDragging(false)}
                       sx={{ position: "fixed", inset: 0, zIndex: 9999, bgcolor: "rgba(0,0,0,0.93)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", userSelect: "none" }}>
-                      <IconButton onClick={() => { setImgZoom(false); setScale(1); setPos({ x: 0, y: 0 }) }}
+                      <IconButton aria-label="Close zoomed image" onClick={() => { setImgZoom(false); setScale(1); setPos({ x: 0, y: 0 }) }}
                         sx={{ position: "absolute", top: 16, right: 16, zIndex: 2, color: "#fff", bgcolor: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", "&:hover": { bgcolor: "rgba(233,30,140,0.4)" } }}>
                         <CloseIcon />
                       </IconButton>
                       <Box sx={{ position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)", zIndex: 2, display: "flex", gap: 1, alignItems: "center", bgcolor: "rgba(0,0,0,0.5)", borderRadius: 10, px: 2, py: 0.8, border: "1px solid rgba(233,30,140,0.3)" }}>
-                        <IconButton onClick={() => setScale((s) => Math.max(s - 0.25, 0.5))} size="small" sx={{ color: "#e91e8c", width: 34, height: 34, fontSize: 20, fontWeight: 700, "&:hover": { bgcolor: "rgba(233,30,140,0.15)" } }}>−</IconButton>
+                        <IconButton aria-label="Zoom out" onClick={() => setScale((s) => Math.max(s - 0.25, 0.5))} size="small" sx={{ color: "#e91e8c", width: 34, height: 34, fontSize: 20, fontWeight: 700, "&:hover": { bgcolor: "rgba(233,30,140,0.15)" } }}>−</IconButton>
                         <Box onClick={() => { setScale(1); setPos({ x: 0, y: 0 }) }} sx={{ color: "#fff", fontFamily: FONT, fontSize: "0.82rem", fontWeight: 600, px: 1.5, cursor: "pointer", minWidth: 44, textAlign: "center", "&:hover": { color: "#e91e8c" } }}>{Math.round(scale * 100)}%</Box>
-                        <IconButton onClick={() => setScale((s) => Math.min(s + 0.25, 4))} size="small" sx={{ color: "#e91e8c", width: 34, height: 34, fontSize: 20, fontWeight: 700, "&:hover": { bgcolor: "rgba(233,30,140,0.15)" } }}>+</IconButton>
+                        <IconButton aria-label="Zoom in" onClick={() => setScale((s) => Math.min(s + 0.25, 4))} size="small" sx={{ color: "#e91e8c", width: 34, height: 34, fontSize: 20, fontWeight: 700, "&:hover": { bgcolor: "rgba(233,30,140,0.15)" } }}>+</IconButton>
                       </Box>
                       <Box component="img" src={modal.img} alt={modal.title}
                         onMouseDown={(e) => { setDragging(true); dragStart.current = { x: e.clientX - pos.x, y: e.clientY - pos.y } }}
@@ -236,9 +236,9 @@ export default function Certificates() {
 
                   <Box sx={{ px: 3, pb: 4 }}>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: modalTextColor, fontSize: "1.1rem", mb: 0.5 }}>{modal.title}</Typography>
-                    <Typography sx={{ fontFamily: FONT, color: "text.secondary", fontSize: "0.88rem", mb: 0.3 }}>{modal.issuer}</Typography>
-                    <Typography sx={{ fontFamily: FONT, color: "text.secondary", fontSize: "0.82rem", mb: 2.5, opacity: 0.7 }}>{modal.date}</Typography>
-                    <Typography sx={{ fontFamily: FONT, color: "text.secondary", lineHeight: 1.85, fontSize: "0.92rem", mb: 2 }}>{modal.desc}</Typography>
+                    <Typography sx={{ fontFamily: FONT, color: "text.primary", fontSize: "0.88rem", mb: 0.3 }}>{modal.issuer}</Typography>
+                    <Typography sx={{ fontFamily: FONT, color: "text.primary", fontSize: "0.82rem", mb: 2.5, opacity: 0.87 }}>{modal.date}</Typography>
+                    <Typography sx={{ fontFamily: FONT, color: "text.primary", lineHeight: 1.85, fontSize: "0.92rem", mb: 2 }}>{modal.desc}</Typography>
                     {modal.skills && modal.skills.length > 0 && (
                       <Box sx={{ mb: 3 }}>
                         <Typography sx={{ fontFamily: FONT, fontWeight: 700, color: "text.primary", fontSize: "0.92rem", mb: 1 }}>Skills</Typography>

@@ -44,6 +44,7 @@ const FONT = '"Plus Jakarta Sans", sans-serif';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("lg"));
   const { toggleColorMode, mode } = useContext(ColorModeContext);
@@ -53,6 +54,11 @@ export default function Navbar() {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setAnimate(true), 1000);
+    return () => clearTimeout(t);
   }, []);
 
   const go = (id) => {
@@ -72,6 +78,33 @@ export default function Navbar() {
 
   return (
     <>
+      <style>{`
+        @keyframes faceCircle { from{stroke-dashoffset:82;opacity:0} to{stroke-dashoffset:0;opacity:1} }
+        @keyframes eyeLeft    { from{opacity:0;transform:translateX(-4px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes eyeRight   { from{opacity:0;transform:translateX(4px)}  to{opacity:1;transform:translateX(0)} }
+        @keyframes smileArc   { from{stroke-dashoffset:20;opacity:0} to{stroke-dashoffset:0;opacity:1} }
+        @keyframes emFade     { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+        .afc { fill:none; stroke:#e91e8c; stroke-width:2; stroke-linecap:round;
+          stroke-dasharray:82; stroke-dashoffset:82;
+          animation: faceCircle 0.6s cubic-bezier(0.4,0,0.2,1) 0s forwards; }
+        .ael { fill:#e91e8c; opacity:0;
+          animation: eyeLeft 0.25s ease 0.65s forwards; }
+        .aer { fill:#e91e8c; opacity:0;
+          animation: eyeRight 0.25s ease 0.85s forwards; }
+        .asm { fill:none; stroke:#e91e8c; stroke-width:2; stroke-linecap:round;
+          stroke-dasharray:20; stroke-dashoffset:20;
+          animation: smileArc 0.35s ease 1.05s forwards; }
+        .em-anim {
+          font-family:'Pinyon Script',cursive;
+          font-weight:400;
+          font-size:52px;
+          fill:#e91e8c;
+          opacity:0;
+          animation: emFade 0.5s ease 0s forwards;
+          filter: drop-shadow(0 0 6px rgba(233,30,140,0.45));
+        }
+      `}</style>
+
       <AppBar
         position="fixed"
         elevation={0}
@@ -108,24 +141,40 @@ export default function Navbar() {
               transition: "all 0.2s",
             }}
           >
-            <SentimentSatisfiedAltIcon
-              className="li"
-              sx={{
-                color: "primary.main",
-                fontSize: 24,
-                transition: "color 0.2s",
-              }}
-            />
+            {!animate ? (
+              <SentimentSatisfiedAltIcon
+                className="li"
+                sx={{ color: "primary.main", fontSize: 24, transition: "color 0.2s", opacity: 0 }}
+              />
+            ) : (
+              <Box sx={{ width: 26, height: 26, flexShrink: 0 }}>
+                <svg viewBox="0 0 26 26" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+                  <circle className="afc" cx="13" cy="13" r="11" />
+                  <circle className="ael" cx="9"  cy="10" r="1.6" />
+                  <circle className="aer" cx="17" cy="10" r="1.6" />
+                  <path   className="asm" d="M8.5 15.5 Q13 20 17.5 15.5" />
+                </svg>
+              </Box>
+            )}
+
             <svg
               viewBox="0 0 110 48"
               width="90"
               height="38"
               xmlns="http://www.w3.org/2000/svg"
+              style={{ overflow: "visible" }}
             >
-              <defs>
-                <style>{`.em-l{font-family:'Pinyon Script',cursive;font-weight:400;font-size:52px;fill:#e91e8c;}`}</style>
-              </defs>
-              <text x="4" y="44" className="em-l">
+              <text
+                x="4" y="44"
+                className={animate ? "em-anim" : undefined}
+                style={{
+                  fontFamily: "'Pinyon Script', cursive",
+                  fontWeight: 400,
+                  fontSize: 52,
+                  fill: "#e91e8c",
+                  opacity: animate ? undefined : 0,
+                }}
+              >
                 EM
               </text>
             </svg>
@@ -151,8 +200,9 @@ export default function Navbar() {
                     fontSize: "0.88rem",
                     minWidth: "auto",
                     "&:hover": {
-                      color: "primary.main",
+                      color: dark ? "primary.main" : "#a8005e",
                       bgcolor: "rgba(233,30,140,0.07)",
+                      opacity: 1,
                     },
                     transition: "all 0.2s",
                   }}
@@ -161,13 +211,10 @@ export default function Navbar() {
                 </Button>
               ))}
 
-              {/* Theme toggle */}
               <Tooltip title={dark ? "Light mode" : "Dark mode"}>
                 <IconButton
                   onClick={toggleColorMode}
-                  aria-label={
-                    dark ? "Switch to light mode" : "Switch to dark mode"
-                  }
+                  aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
                   sx={{
                     ml: 1,
                     color: dark ? "primary.main" : "#1a0a2e",
@@ -191,9 +238,9 @@ export default function Navbar() {
                 </IconButton>
               </Tooltip>
 
-              {/* Menu icon for all links */}
               <IconButton
                 onClick={() => setOpen(true)}
+                aria-label="Open menu"
                 sx={{
                   ml: 0.5,
                   color: "primary.main",
@@ -215,9 +262,7 @@ export default function Navbar() {
             <Box sx={{ display: "flex", gap: 1 }}>
               <IconButton
                 onClick={toggleColorMode}
-                aria-label={
-                  dark ? "Switch to light mode" : "Switch to dark mode"
-                }
+                aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
                 sx={{
                   color: dark ? "primary.main" : "#1a0a2e",
                   border: "1px solid rgba(233,30,140,0.28)",

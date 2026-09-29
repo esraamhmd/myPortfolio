@@ -14,6 +14,9 @@ const FONT = '"Plus Jakarta Sans", sans-serif'
 const CDN = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}`
 
 const PER_PAGE = 6
+
+const BTN_TEXT = { '#722F99': '#ffffff', '#f72585': '#0a0a14', '#06d6a0': '#0a0a14', '#8DB355': '#0a0a14' }
+const PINK_BTN = '#dd1682'
 const COLORS = ['#722F99', '#f72585', '#06d6a0', '#8DB355']
 
 const ACCESSIBLE = {
@@ -94,7 +97,7 @@ const paginationSx = {
     '&:hover': { bgcolor: 'rgba(233,30,140,0.08)', borderColor: 'primary.main', color: 'primary.main' },
   },
   '& .MuiPaginationItem-root.Mui-selected': {
-    bgcolor: 'primary.main', color: '#fff', border: '1px solid transparent',
+    bgcolor: (t) => t.palette.mode === 'dark' ? PINK_BTN : 'primary.main', color: '#fff', border: '1px solid transparent',
     boxShadow: '0 4px 16px rgba(233,30,140,0.35)',
     '&:hover': { bgcolor: 'primary.dark' },
   },
@@ -125,18 +128,18 @@ export default function Projects() {
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>What I Built</Typography>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? 'primary.main' : '#a8005e', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>What I Built</Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, mb: 4 }}>
-            My <Box component="span" sx={{ color: 'primary.main' }}>Projects</Box>
+            My <Box component="span" sx={{ color: isDark ? 'primary.main' : '#a8005e' }}>Projects</Box>
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 1.5 }}>
             {FILTERS.map(f => (
               <Button key={f} onClick={() => handleFilter(f)} variant={active === f ? 'contained' : 'outlined'}
                 sx={{ fontFamily: FONT, fontWeight: 600, textTransform: 'none', borderRadius: 3, px: 2.5, py: 0.8, fontSize: '0.88rem', transition: 'all 0.22s',
                   ...(active === f
-                    ? { bgcolor: 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
-                    : { borderColor: 'rgba(233,30,140,0.3)', color: 'primary.main', '&:hover': { borderColor: 'primary.main', bgcolor: 'rgba(233,30,140,0.07)' } }
+                    ? { bgcolor: isDark ? PINK_BTN : 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
+                    : { borderColor: 'rgba(233,30,140,0.3)', color: isDark ? 'primary.main' : '#a8005e', '&:hover': { borderColor: isDark ? 'primary.main' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)' } }
                   ),
                 }}>
                 {f}
@@ -202,7 +205,7 @@ export default function Projects() {
                   <Button component="a" href={p.demo} target="_blank" rel="noopener noreferrer"
                     aria-label={`Live demo for ${p.title}`}
                     startIcon={<LaunchIcon fontSize="small" />} size="small" variant="contained"
-                    sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, bgcolor: p.color, color: '#fff', textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
+                    sx={{ flex: 1, fontFamily: FONT, fontWeight: 600, bgcolor: p.color, color: BTN_TEXT[p.color] || '#fff', textTransform: 'none', borderRadius: 2.5, fontSize: '0.8rem',
                       boxShadow: `0 3px 12px ${p.color}40`,
                       '&:hover': { bgcolor: p.color, filter: 'brightness(1.18)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
                     Live Demo
@@ -228,9 +231,9 @@ export default function Projects() {
         <Box sx={{ textAlign: 'center' }}>
           <Button component="a" href={REPOS_URL} target="_blank" rel="noopener noreferrer"
             variant="outlined" size="large" endIcon={<ArrowForwardIcon />}
-            aria-label="View more projects on GitHub"
-            sx={{ fontFamily: FONT, fontWeight: 700, borderColor: 'rgba(233,30,140,0.4)', color: 'primary.main', px: 4, py: 1.3, borderRadius: 3, textTransform: 'none', fontSize: '0.95rem',
-              '&:hover': { borderColor: 'primary.main', bgcolor: 'rgba(233,30,140,0.07)', transform: 'translateY(-2px)' }, transition: 'all 0.25s' }}>
+            aria-label="More on GitHub - view more projects"
+            sx={{ fontFamily: FONT, fontWeight: 700, borderColor: 'rgba(233,30,140,0.4)', color: isDark ? 'primary.main' : '#a8005e', px: 4, py: 1.3, borderRadius: 3, textTransform: 'none', fontSize: '0.95rem',
+              '&:hover': { borderColor: isDark ? 'primary.main' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)', transform: 'translateY(-2px)' }, transition: 'all 0.25s' }}>
             More on GitHub
           </Button>
         </Box>
@@ -257,7 +260,7 @@ export default function Projects() {
               <Box sx={{ flexShrink: 0, display: 'flex', alignItems: 'center', p: 1.5, bgcolor: 'background.paper', borderBottom: `1px solid ${modal.color}20`, borderRadius: '16px 16px 0 0' }}>
                 <Box sx={{ width: 4, height: 24, bgcolor: modal.color, borderRadius: 2, mr: 1.5 }} />
                 <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: '1rem', color: 'text.primary', flex: 1 }}>{modal.title}</Typography>
-                <IconButton onClick={() => setModal(null)} aria-label="Close" sx={{ color: modal.color, border: `1px solid ${modal.color}30`, borderRadius: 2 }}><CloseIcon /></IconButton>
+                <IconButton onClick={() => setModal(null)} aria-label="Close" sx={{ color: tc(modal.color), border: `1px solid ${modal.color}30`, borderRadius: 2 }}><CloseIcon /></IconButton>
               </Box>
 
               <Box sx={{
@@ -292,14 +295,14 @@ export default function Projects() {
                     <Button component="a" href={modal.github} target="_blank" rel="noopener noreferrer"
                       aria-label={`GitHub repository for ${modal.title}`}
                       startIcon={<GitHubIcon />} variant="outlined"
-                      sx={{ fontFamily: FONT, fontWeight: 600, borderColor: `${modal.color}50`, color: modal.color, textTransform: 'none', borderRadius: 3, px: 3,
-                        '&:hover': { borderColor: modal.color, bgcolor: `${modal.color}18`, color: modal.color }, transition: 'all 0.22s' }}>
+                      sx={{ fontFamily: FONT, fontWeight: 600, borderColor: `${modal.color}50`, color: tc(modal.color), textTransform: 'none', borderRadius: 3, px: 3,
+                        '&:hover': { borderColor: modal.color, bgcolor: `${modal.color}18`, color: tc(modal.color) }, transition: 'all 0.22s' }}>
                       GitHub
                     </Button>
                     <Button component="a" href={modal.demo || modal.github} target="_blank" rel="noopener noreferrer"
                       aria-label={`Live demo for ${modal.title}`}
                       startIcon={<LaunchIcon />} variant="contained"
-                      sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: modal.color, color: '#fff', textTransform: 'none', borderRadius: 3, px: 3,
+                      sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: modal.color, color: BTN_TEXT[modal.color] || '#fff', textTransform: 'none', borderRadius: 3, px: 3,
                         boxShadow: `0 4px 16px ${modal.color}40`,
                         '&:hover': { bgcolor: modal.color, filter: 'brightness(1.18)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
                       Live Demo

@@ -16,12 +16,24 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'><rect width='24' height='24' rx='12' fill='%23e91e8c'/><path fill='white' d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7zm7.5-5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-5 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z'/></svg>" />
 
-   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Pinyon Script preload for navbar/footer EM logo -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" /></noscript>
+
+    <!-- Plus Jakarta Sans -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
+
+ 
+    <link rel="preload" as="font" href="/assets/fonts/Fredoka-SemiBold.ttf" crossorigin="anonymous" />
+
+   
+    <link rel="preload" as="fetch" href="/assets/home.lottie" crossorigin="anonymous" />
 
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,6 +43,18 @@
         background: transparent; overflow-x: hidden;
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
+      @font-face {
+        font-family: 'Fredoka';
+        src: url('/assets/fonts/Fredoka-SemiBold.ttf') format('truetype');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: optional;
+        size-adjust: 100%;
+        ascent-override: 90%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+      }
+      html { background: #0a0a14; }
       dotlottie-player, dotlottie-player *, dotlottie-player canvas,
       .dotlottie-container, .dotlottie-container *, [class*="dotlottie"], [class*="dotlottie"] * {
         background: transparent !important;

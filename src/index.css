@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Pinyon Script';
   src: url('/fonts/PinyonScript-Regular.ttf') format('truetype');
@@ -7,6 +6,20 @@
   font-display: swap;
 }
 
+
+
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('/assets/fonts/Fredoka-SemiBold.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
 
 
 :root {

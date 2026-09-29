@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Box, useTheme, Typography, Container, Paper, Chip } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
@@ -8,7 +8,7 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 const FONT = '"Plus Jakarta Sans", sans-serif'
 
 const ACCESSIBLE = {
-  '#e91e8c': { dark: '#e91e8c', light: '#a8005e' },
+  '#473472': { dark: '#a581f8', light: '#473472' },
   '#ff6ec7': { dark: '#f06ab3', light: '#9c0060' },
   '#c2185b': { dark: '#e8527a', light: '#8b0038' },
   '#9c27b0': { dark: '#ce6fdd', light: '#6a0080' },
@@ -20,7 +20,7 @@ const TRAINING = [
     role: 'NextStep Mentorship Program',
     company: 'Deloitte Innovation Hub',
     period: 'Aug 2026 - 1 Month',
-    color: '#e91e8c',
+    color: '#473472',
     isDeloitte: true,
     Icon: EmojiEventsIcon,
     description: 'Software Engineering Mentee at Deloitte NextStep Mentorship Program, Deloitte Innovation Hub, gaining industry insights and career guidance from Deloitte professionals.',
@@ -76,44 +76,60 @@ export default function Training() {
 
   const tc = (color) => ACCESSIBLE[color]?.[isDark ? 'dark' : 'light'] ?? color
 
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Box id="training" sx={{ py: 14, bgcolor: 'transparent', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
+    <Box id="training" ref={sectionRef} sx={{ py: 14, bgcolor: 'transparent', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
       <Box sx={{ position:'absolute', bottom:'-10%', left:'-8%', width:500, height:500, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(233,30,140,0.07) 0%,transparent 70%)' }} />
 
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 600, letterSpacing: 3 }}>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? 'primary.main' : '#a8005e', fontFamily: FONT, fontWeight: 600, letterSpacing: 3 }}>
               My Professional Development
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' } }}>
             Training, Courses{' '}
-            <Box component="span" sx={{ color: 'primary.main' }}>&amp; Programs</Box>
+            <Box component="span" sx={{ color: isDark ? 'primary.main' : '#a8005e' }}>&amp; Programs</Box>
           </Typography>
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2,1fr)' }, gap: 3 }}>
           {SORTED.map((t, i) => {
             const textColor = tc(t.color)
+            const strong = !!t.isDeloitte && isDark 
             return (
               <Paper key={i} elevation={0} sx={{
                 bgcolor: 'background.paper',
-                border: '1px solid', borderColor: `${t.color}25`,
+                border: '1px solid', borderColor: strong ? `${t.color}b0` : `${t.color}25`,
                 borderRadius: 3, p: 3.5,
-                boxShadow: `0 4px 20px ${t.color}0f`,
-                '&:hover': { borderColor: `${t.color}65`, transform: 'translateY(-6px)', boxShadow: `0 14px 40px ${t.color}22` },
+                boxShadow: strong ? `0 4px 20px ${t.color}59` : `0 4px 20px ${t.color}0f`,
+                '&:hover': { borderColor: strong ? t.color : `${t.color}65`, transform: 'translateY(-6px)', boxShadow: strong ? `0 14px 40px ${t.color}80` : `0 14px 40px ${t.color}22` },
                 transition: 'all 0.25s',
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateY(0)' : 'translateY(28px)',
               }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
-                  <Box sx={{ width: 52, height: 52, borderRadius: 2, flexShrink: 0, bgcolor: `${t.color}12`, border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, boxShadow: `0 4px 14px ${t.color}20` }}>
+                  <Box sx={{ width: 52, height: 52, borderRadius: 2, flexShrink: 0, bgcolor: strong ? `${t.color}55` : `${t.color}12`, border: strong ? `1.5px solid ${t.color}b0` : `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: textColor, boxShadow: `0 4px 14px ${t.color}20` }}>
                     <t.Icon sx={{ fontSize: 26 }} />
                   </Box>
 
                   <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 0.6 }}>
-                      <Chip label={t.type} size="small" sx={{ bgcolor: `${t.color}12`, color: textColor, border: `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
+                      <Chip label={t.type} size="small" sx={{ bgcolor: strong ? `${t.color}55` : `${t.color}12`, color: textColor, border: strong ? `1px solid ${t.color}b0` : `1px solid ${t.color}30`, fontSize: '0.7rem', fontWeight: 700, height: 22 }} />
                       <Typography variant="caption" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 500 }}>{t.period}</Typography>
                     </Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 700, fontSize: '0.97rem', color: 'text.primary', mb: 0.3, lineHeight: 1.4 }}>{t.role}</Typography>

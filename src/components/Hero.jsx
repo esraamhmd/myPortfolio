@@ -6,14 +6,26 @@ import EmailIcon from '@mui/icons-material/Email'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { ColorModeContext } from '../App'
 
-const FONT = '"Plus Jakarta Sans", sans-serif'
+const FONT = '"Fredoka", sans-serif'
 const ROLE = 'Fullstack Developer'
+const DELAY = 1.0
 
 const charCss = ROLE.split('').map((_, i) =>
-  `.tc-${i}{animation:tc-show 0.18s ease ${0.6 + i * 0.12}s both;}`
+  `.tc-${i}{animation:tc-show 0.18s ease ${DELAY + i * 0.12}s both;}`
 ).join('')
 
 const css = `
+@font-face {
+  font-family: 'Fredoka';
+  src: url('/assets/fonts/Fredoka-SemiBold.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
 .tc{display:inline-block;opacity:0;}
 ${charCss}
 @keyframes tc-show{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
@@ -21,7 +33,7 @@ ${charCss}
   display:inline-block;width:3px;height:.85em;
   background:#e91e8c;margin-left:2px;vertical-align:middle;
   animation:tc-blink .8s step-end infinite;
-  animation-delay:${0.6 + ROLE.length * 0.12 + 0.2}s;
+  animation-delay:${DELAY + ROLE.length * 0.12 + 0.2}s;
   opacity:0;
 }
 @keyframes tc-blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -62,7 +74,7 @@ export default function Hero() {
           <Box sx={{ flex: '0 0 auto', width: { xs: '100%', md: '50%' }, textAlign: 'center' }}>
 
             <Typography variant="h1" sx={{
-              fontFamily: FONT, fontWeight: 800,
+              fontFamily: `${FONT} !important`, fontWeight: 600,
               fontSize: { xs: '3rem', md: '4rem', lg: '5rem' },
               lineHeight: 1.05, color: 'text.primary', mb: 0.5,
               textShadow: isDark ? '0 4px 28px rgba(233,30,140,0.12)' : 'none',
@@ -71,7 +83,7 @@ export default function Hero() {
             </Typography>
 
             <Typography variant="h1" sx={{
-              fontFamily: FONT, fontWeight: 800,
+              fontFamily: `${FONT} !important`, fontWeight: 600,
               fontSize: { xs: '2.6rem', md: '3.6rem', lg: '4.4rem' },
               lineHeight: 1.1, mb: 3,
               background: 'linear-gradient(135deg,#e91e8c,#ff6ec7)',
@@ -84,18 +96,18 @@ export default function Hero() {
             </Typography>
 
             <Typography variant="h2" sx={{
-              fontFamily: FONT, fontWeight: 700,
-              mb: 5, color: 'primary.main',
-              textShadow: '0 2px 14px rgba(233,30,140,0.28)',
+              fontFamily: `${FONT} !important`, fontWeight: 600,
+              mb: 5, color: isDark ? 'primary.main' : '#a8005e',
+              textShadow: isDark ? '0 2px 14px rgba(233,30,140,0.28)' : 'none',
               minHeight: '2.6rem',
               fontSize: { xs: '1.5rem', md: '1.8rem', lg: '2rem' },
             }}>
               {ROLE.split('').map((ch, i) => (
                 <span key={i} className={`tc tc-${i}`}>
-                  {ch === ' ' ? '\u00A0' : ch}
+                  {ch === ' ' ? ' ' : ch}
                 </span>
               ))}
-              <span className="tc-cur" />
+              <span className="tc-cur" aria-hidden="true" />
             </Typography>
 
             {/* GitHub + LinkedIn + Gmail */}
@@ -103,9 +115,9 @@ export default function Hero() {
               {SOCIALS.map(s => (
                 <IconButton
                   key={s.label}
-                  component="a" href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label}
+                  component="a" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
                   sx={{
-                    color: 'text.primary', opacity: 0.75,
+                    color: 'text.primary', opacity: 0.87,
                     border: '1px solid rgba(233,30,140,0.28)',
                     borderRadius: 2,
                     width: 52, height: 52,
@@ -126,7 +138,6 @@ export default function Hero() {
             </Box>
           </Box>
 
-         
           <Box sx={{
             flex: '0 0 auto',
             width: { xs: '85%', sm: '60%', md: '46%' },

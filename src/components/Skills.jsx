@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Box, useTheme, Typography, Container, Paper, Button, Pagination } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 
 const FONT = '"Plus Jakarta Sans", sans-serif'
 const PER_PAGE = 8
+const BTN_PINK = '#dd1682' 
 
 function accessibleColor(hex, isDark) {
- 
+
   const lightNeedsdarker = ['#ffffff', '#f7df1e', '#61dafb', '#38bdf8', '#ff4154', '#ff6c37', '#45ba4b', '#68a063', '#47a248', '#3ecf8e']
   if (!isDark && lightNeedsdarker.includes(hex.toLowerCase())) {
     const map = {
@@ -71,7 +72,7 @@ const paginationSx = {
     '&:hover': { bgcolor: 'rgba(233,30,140,0.08)', borderColor: 'primary.main', color: 'primary.main' },
   },
   '& .MuiPaginationItem-root.Mui-selected': {
-    bgcolor: 'primary.main', color: '#fff',
+    bgcolor: (t) => t.palette.mode === 'dark' ? BTN_PINK : 'primary.main', color: '#fff',
     border: '1px solid transparent',
     boxShadow: '0 4px 16px rgba(233,30,140,0.35)',
     '&:hover': { bgcolor: 'primary.dark' },
@@ -84,6 +85,19 @@ export default function Skills() {
   const [active, setActive] = useState('All')
   const [page,   setPage]   = useState(1)
 
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const filtered  = active === 'All' ? ALL_SKILLS : ALL_SKILLS.filter(s => s.cat === active)
   const pageCount = Math.ceil(filtered.length / PER_PAGE)
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
@@ -92,28 +106,32 @@ export default function Skills() {
   const handlePage   = (_, v) => { setPage(v); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) }
 
   return (
-    <Box id="skills" sx={{ py: 14, width: '100%', bgcolor: 'transparent', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
+    <Box id="skills" ref={sectionRef} sx={{ py: 14, width: '100%', bgcolor: 'transparent', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
       <Box sx={{ position:'absolute', top:'20%', left:'-6%', width:500, height:500, borderRadius:'50%', pointerEvents:'none', background:'radial-gradient(circle,rgba(233,30,140,0.07) 0%,transparent 70%)' }} />
 
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mb: 1 }}>
             <AutoAwesomeIcon sx={{ color: 'primary.main', fontSize: 18 }} />
-            <Typography variant="overline" aria-hidden="true" sx={{ color: 'primary.main', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
+            <Typography variant="overline" aria-hidden="true" sx={{ color: isDark ? 'primary.main' : '#a8005e', fontFamily: FONT, fontWeight: 700, letterSpacing: 3 }}>
               Technical Skills
             </Typography>
           </Box>
           <Typography variant="h2" sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, mb: 4 }}>
-            My <Box component="span" sx={{ color: 'primary.main' }}>Skills</Box>
+            My <Box component="span" sx={{ color: isDark ? 'primary.main' : '#a8005e' }}>Skills</Box>
           </Typography>
 
-        
-          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 1.5 }}>
+
+          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 1.5,
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(28px)',
+            transition: visible ? 'opacity 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.1s, transform 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.1s' : 'none',
+          }}>
             {FILTERS.map(f => (
               <Button key={f} onClick={() => handleFilter(f)} variant={active === f ? 'contained' : 'outlined'}
                 sx={{ fontFamily: FONT, fontWeight: 600, textTransform: 'none', borderRadius: 3, px: 2.5, py: 0.8, fontSize: '0.88rem',
                   ...(active === f
-                    ? { bgcolor: 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
+                    ? { bgcolor: isDark ? BTN_PINK : 'primary.main', color: '#fff', boxShadow: '0 4px 16px rgba(233,30,140,0.35)', '&:hover': { bgcolor: 'primary.dark' } }
                     : { borderColor: 'rgba(233,30,140,0.3)', color: 'primary.main', '&:hover': { borderColor: isDark ? '#f06ab3' : '#a8005e', bgcolor: 'rgba(233,30,140,0.07)' } }
                   ), transition: 'all 0.2s',
                 }}>
@@ -123,8 +141,12 @@ export default function Skills() {
           </Box>
         </Box>
 
-     
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', sm: 'repeat(3,1fr)', md: 'repeat(4,1fr)' }, gap: 3, mb: 6 }}>
+
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', sm: 'repeat(3,1fr)', md: 'repeat(4,1fr)' }, gap: 3, mb: 6,
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(28px)',
+          transition: visible ? 'opacity 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.3s, transform 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.3s' : 'none',
+        }}>
           {paginated.map(skill => {
             const textColor = accessibleColor(skill.color, isDark)
             return (
@@ -133,7 +155,7 @@ export default function Skills() {
                   '&:hover': { borderColor: `${skill.color}70`, transform: 'translateY(-10px)', boxShadow: `0 18px 50px ${skill.color}30` }, transition: 'all 0.25s',
                 }}>
                 <Box sx={{ width: 70, height: 70, borderRadius: 2.5, bgcolor: `${skill.color}12`, border: '1.5px solid', borderColor: `${skill.color}28`, display: 'flex', alignItems: 'center', justifyContent: 'center', p: 1.4, boxShadow: `0 4px 18px ${skill.color}1a` }}>
-                  <img src={skill.icon} alt={skill.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={e => { e.target.style.opacity = 0.3 }} />
+                  <img src={skill.icon} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={e => { e.target.style.opacity = 0.3 }} />
                 </Box>
                 <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 600, fontSize: '0.88rem', textAlign: 'center' }}>
                   {skill.name}
