@@ -79,9 +79,8 @@ export default function Education() {
 
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
                 {[
-                  'Grade: A',
-                  'Graduation Project: A+',
-                  'among the top students in my class',
+                  'Grade: A · Among the top students in my class',
+                  'Graduation Project: A+ · Team Leader & AI Model Developer',
                 ].map(b => (
                   <Chip key={b} label={b} size="small" sx={{
                     bgcolor: 'rgba(233,30,140,0.09)',

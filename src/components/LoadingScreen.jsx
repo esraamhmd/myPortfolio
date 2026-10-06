@@ -20,7 +20,7 @@ export default function LoadingScreen({ onDone }) {
       alignItems: 'center', justifyContent: 'center', gap: 2,
       opacity: phase === 2 ? 0 : 1,
       pointerEvents: phase === 2 ? 'none' : 'all',
-      transition: 'opacity 0.4s ease',
+      transition: 'opacity 1s ease',
     }}>
       <Box sx={{
         animation: 'emojiBounce 0.7s cubic-bezier(0.34,1.56,0.64,1) both',

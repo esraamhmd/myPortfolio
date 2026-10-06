@@ -16,7 +16,7 @@ const CDN = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}`
 const PER_PAGE = 6
 
 const BTN_BG = { '#722F99': '#722F99', '#f72585': '#e1086b', '#06d6a0': '#048261', '#8DB355': '#627e38' }
-const PINK_BTN = '#dd1682' 
+const PINK_BTN = '#dd1682'
 const COLORS = ['#722F99', '#f72585', '#06d6a0', '#8DB355']
 
 const ACCESSIBLE = {
@@ -299,14 +299,16 @@ export default function Projects() {
                         '&:hover': { borderColor: modal.color, bgcolor: `${modal.color}18`, color: tc(modal.color) }, transition: 'all 0.22s' }}>
                       GitHub
                     </Button>
-                    <Button component="a" href={modal.demo || modal.github} target="_blank" rel="noopener noreferrer"
-                      aria-label={`Live demo for ${modal.title}`}
-                      startIcon={<LaunchIcon />} variant="contained"
-                      sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: BTN_BG[modal.color] || modal.color, color: '#fff', textTransform: 'none', borderRadius: 3, px: 3,
-                        boxShadow: `0 4px 16px ${modal.color}40`,
-                        '&:hover': { bgcolor: BTN_BG[modal.color] || modal.color, filter: 'brightness(1.08)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
-                      Live Demo
-                    </Button>
+                    {modal.demo && (
+                      <Button component="a" href={modal.demo} target="_blank" rel="noopener noreferrer"
+                        aria-label={`Live demo for ${modal.title}`}
+                        startIcon={<LaunchIcon />} variant="contained"
+                        sx={{ fontFamily: FONT, fontWeight: 600, bgcolor: BTN_BG[modal.color] || modal.color, color: '#fff', textTransform: 'none', borderRadius: 3, px: 3,
+                          boxShadow: `0 4px 16px ${modal.color}40`,
+                          '&:hover': { bgcolor: BTN_BG[modal.color] || modal.color, filter: 'brightness(1.08)', transform: 'translateY(-2px)' }, transition: 'all 0.22s' }}>
+                        Live Demo
+                      </Button>
+                    )}
                   </Box>
                 </Box>
               </Box>
