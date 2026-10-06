@@ -79,12 +79,21 @@ export default function Education() {
 
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
                 {[
-                  'Grade: A · Among the top students in my class',
-                  'Graduation Project: A+ · Team Leader & AI Model Developer',
+                  
+                  { key: 'grade', label: 'Grade: A · ', extra: 'Among the top students in my class', color: isDark ? '#f96aab' : '#9c0055' },
+                  { key: 'project', label: 'Graduation Project: A+ · ', extra: 'Team Leader & AI Model Developer', color: isDark ? '#f96aab' : '#9c0055' },
                 ].map(b => (
-                  <Chip key={b} label={b} size="small" sx={{
+                  <Chip key={b.key} size="small"
+                    label={b.extra ? (
+                      <>
+                        {b.label}
+                       
+                        <Box component="span" sx={{ color: 'text.secondary' }}>{b.extra}</Box>
+                      </>
+                    ) : b.label}
+                    sx={{
                     bgcolor: 'rgba(233,30,140,0.09)',
-                    color: isDark ? 'primary.main' : '#a8005e',
+                    color: b.color,
                     border: '1px solid rgba(233,30,140,0.28)',
                     fontSize: '0.82rem',
                     fontWeight: 700,

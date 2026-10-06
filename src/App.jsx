@@ -1,19 +1,20 @@
-import React, { useState, useMemo, createContext, useCallback } from 'react'
+import React, { useState, useMemo, useEffect, createContext, useCallback, lazy, Suspense } from 'react'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Stats from './components/Stats'
-import About from './components/About'
-import Experience from './components/Experience'
-import Education from './components/Education'
-import Training from './components/Training'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Certificates from './components/Certificates'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import StarBackground from './components/StarBackground'
 import LoadingScreen from './components/LoadingScreen'
+
+const StarBackground = lazy(() => import('./components/StarBackground'))
+const Stats          = lazy(() => import('./components/Stats'))
+const About          = lazy(() => import('./components/About'))
+const Experience     = lazy(() => import('./components/Experience'))
+const Training       = lazy(() => import('./components/Training'))
+const Education      = lazy(() => import('./components/Education'))
+const Skills         = lazy(() => import('./components/Skills'))
+const Projects       = lazy(() => import('./components/Projects'))
+const Certificates   = lazy(() => import('./components/Certificates'))
+const Contact        = lazy(() => import('./components/Contact'))
+const Footer         = lazy(() => import('./components/Footer'))
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {}, mode: 'dark' })
 
@@ -21,6 +22,18 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const handleDone = useCallback(() => setLoading(false), [])
   const [mode, setMode] = useState('dark')
+
+
+  const [showRest, setShowRest] = useState(false)
+  useEffect(() => {
+    const start = () => setShowRest(true)
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(start, { timeout: 1500 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const t = setTimeout(start, 800)
+    return () => clearTimeout(t)
+  }, [])
 
   const colorMode = useMemo(() => ({
     toggleColorMode: () => setMode(p => p === 'dark' ? 'light' : 'dark'),
@@ -93,20 +106,24 @@ export default function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
 
-          <StarBackground mode={mode} />
-
           <Navbar />
           <Hero />
-          <Stats />
-          <About />
-          <Experience/>
-          <Training />
-          <Education />
-          <Skills />
-          <Projects />
-          <Certificates />
-          <Contact />
-          <Footer />
+
+          {showRest && (
+            <Suspense fallback={null}>
+              <StarBackground mode={mode} />
+              <Stats />
+              <About />
+              <Experience />
+              <Training />
+              <Education />
+              <Skills />
+              <Projects />
+              <Certificates />
+              <Contact />
+              <Footer />
+            </Suspense>
+          )}
 
         </ThemeProvider>
       </ColorModeContext.Provider>
