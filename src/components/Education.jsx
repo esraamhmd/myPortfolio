@@ -47,19 +47,19 @@ export default function Education() {
           bgcolor: 'background.paper',
           border: '1px solid rgba(233,30,140,0.22)',
           borderRadius: 4,
-          p: { xs: 4, md: 6 },
+          p: { xs: 3, sm: 4, md: 6 },
           boxShadow: '0 4px 24px rgba(233,30,140,0.10)',
           '&:hover': { borderColor: 'rgba(233,30,140,0.60)', transform: 'translateY(-6px)', boxShadow: '0 20px 60px rgba(233,30,140,0.20)' },
           transition: 'all 0.25s',
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(28px)',
         }}>
-          <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 3, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: { xs: 2, sm: 3 }, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
             <Box sx={{ flexShrink: 0, width: 64, height: 64, borderRadius: 3, bgcolor: 'rgba(233,30,140,0.12)', border: '2px solid rgba(233,30,140,0.38)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'primary.main', boxShadow: '0 4px 20px rgba(233,30,140,0.20)' }}>
               <AccountBalanceIcon sx={{ fontSize: 32 }} />
             </Box>
 
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, minWidth: 0, width: { xs: '100%', sm: 'auto' } }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 1 }}>
                 <Chip label="University" size="small" sx={{ bgcolor: 'rgba(233,30,140,0.12)', color: isDark ? 'primary.main' : '#a8005e', border: '1px solid rgba(233,30,140,0.30)', fontSize: '0.75rem', fontWeight: 700, height: 24 }} />
                 <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: FONT, fontWeight: 500, fontSize: '0.88rem' }}>
@@ -88,9 +88,13 @@ export default function Education() {
                     border: '1px solid rgba(233,30,140,0.28)',
                     fontSize: '0.82rem',
                     fontWeight: 700,
-                    height: 28,
+                    height: 'auto',
+                    minHeight: 28,
+                    maxWidth: '100%',
                     px: 0.5,
+                    py: 0.3,
                     boxShadow: '0 2px 10px rgba(233,30,140,0.14)',
+                    '& .MuiChip-label': { whiteSpace: 'normal', textAlign: 'left', lineHeight: 1.4 },
                   }} />
                 ))}
               </Box>
