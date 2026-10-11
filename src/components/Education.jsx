@@ -79,15 +79,15 @@ export default function Education() {
                 Computer Science Department
               </Typography>
 
-              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' } }}>
+              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gap: { xs: 1.2, md: 2 }, gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' } }}>
                 {[
                   { key: 'grade', grade: 'A', title: 'Grade: A', text: 'Among the top students in my class', Icon: WorkspacePremiumIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },
                   { key: 'project', grade: 'A+', title: 'Graduation Project: A+', text: 'Team Leader & AI Model Developer', Icon: GroupsIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },
                 ].map(b => (
                   <Box component="li" key={b.key} sx={{
                     position: 'relative', overflow: 'hidden',
-                    display: 'flex', alignItems: 'center', gap: 2,
-                    p: 2, borderRadius: 3,
+                    display: 'flex', alignItems: 'center', gap: { xs: 1.3, md: 2 },
+                    p: { xs: 1.2, sm: 1.5, md: 2 }, borderRadius: 3, minWidth: 0,
                     border: `1px solid ${b.accent}${isDark ? '47' : '59'}`,
                     background: `linear-gradient(135deg, ${b.accent}${isDark ? '1f' : '14'} 0%, transparent 70%)`,
                     transition: 'transform .25s, box-shadow .25s, border-color .25s',
@@ -95,29 +95,30 @@ export default function Education() {
                     '@media (prefers-reduced-motion: reduce)': { transition: 'none' },
                   }}>
                     <Box aria-hidden="true" sx={{
-                      position: 'relative', flexShrink: 0, width: 64, height: 64, borderRadius: '50%',
+                      position: 'relative', flexShrink: 0, width: { xs: 42, sm: 48, md: 64 }, height: { xs: 42, sm: 48, md: 64 }, borderRadius: '50%',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: b.grade.length > 1 ? '1.5rem' : '1.8rem',
+                      color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: b.grade.length > 1 ? { xs: '0.95rem', sm: '1.1rem', md: '1.5rem' } : { xs: '1.15rem', sm: '1.3rem', md: '1.8rem' },
                       bgcolor: 'background.paper',
                       border: `2px solid ${b.accent}`,
-                      boxShadow: `0 0 0 5px ${b.accent}1f, 0 4px 18px ${b.accent}40`,
+                      boxShadow: { xs: `0 0 0 3px ${b.accent}1f, 0 3px 12px ${b.accent}40`, md: `0 0 0 5px ${b.accent}1f, 0 4px 18px ${b.accent}40` },
                     }}>
                       {b.grade}
-                      <Box sx={{ position: 'absolute', right: -6, bottom: -6, width: 26, height: 26, borderRadius: '50%', bgcolor: 'background.paper', border: `1px solid ${b.accent}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <b.Icon sx={{ fontSize: 16, color: b.color }} />
+                      <Box sx={{ position: 'absolute', right: -5, bottom: -5, width: { xs: 18, md: 26 }, height: { xs: 18, md: 26 }, borderRadius: '50%', bgcolor: 'background.paper', border: `1px solid ${b.accent}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <b.Icon sx={{ fontSize: { xs: 11, md: 16 }, color: b.color }} />
                       </Box>
                     </Box>
                     <Box sx={{ minWidth: 0 }}>
-                      <Typography sx={{ color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: '1rem', lineHeight: 1.3 }}>
+                      <Typography sx={{ color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: { xs: '0.85rem', md: '1rem' }, lineHeight: 1.3 }}>
                         {b.title}
                       </Typography>
-                      <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.88rem', lineHeight: 1.5, mt: 0.3 }}>
+                      <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: { xs: '0.76rem', md: '0.88rem' }, lineHeight: 1.45, mt: 0.3 }}>
                         {b.text}
                       </Typography>
                     </Box>
                   </Box>
                 ))}
               </Box>
+
             </Box>
           </Box>
         </Paper>
