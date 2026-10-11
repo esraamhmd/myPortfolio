@@ -62,24 +62,24 @@ export default function Education() {
             </Box>
 
             <Box sx={{ flex: 1, minWidth: 0, width: { xs: '100%', sm: 'auto' } }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 1 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, mb: 1, minHeight: { xs: 64, sm: 0 }, alignContent: { xs: 'center', sm: 'normal' } }}>
                 <Chip label="University" size="small" sx={{ bgcolor: 'rgba(233,30,140,0.12)', color: isDark ? 'primary.main' : '#a8005e', border: '1px solid rgba(233,30,140,0.30)', fontSize: '0.75rem', fontWeight: 700, height: 24 }} />
                 <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: FONT, fontWeight: 500, fontSize: '0.88rem' }}>
                   Oct 2021 – Jul 2025
                 </Typography>
               </Box>
 
-              <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '1.1rem', md: '1.3rem' }, mb: 0.5 }}>
+              <Typography sx={{ color: 'text.primary', fontFamily: FONT, fontWeight: 800, fontSize: { xs: '1.1rem', md: '1.3rem' }, mb: 0.5, ml: { xs: '-80px', sm: 0 } }}>
                 Modern University for Technology &amp; Information - MTI
               </Typography>
-              <Typography sx={{ color: isDark ? 'primary.main' : '#a8005e', fontFamily: FONT, fontWeight: 600, fontSize: '1rem', mb: 0.4 }}>
+              <Typography sx={{ color: isDark ? 'primary.main' : '#a8005e', fontFamily: FONT, fontWeight: 600, fontSize: '1rem', mb: 0.4, ml: { xs: '-80px', sm: 0 } }}>
                 Bachelor of Computer Science and AI
               </Typography>
-              <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.9rem', mb: 3 }}>
+              <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.9rem', mb: 3, ml: { xs: '-80px', sm: 0 } }}>
                 Computer Science Department
               </Typography>
 
-              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gap: { xs: 1.2, md: 2 }, gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' } }}>
+              <Box component="ul" sx={{ listStyle: 'none', m: 0, ml: { xs: '-80px', sm: 0 }, p: 0, display: 'grid', gap: { xs: 1.2, md: 2 }, gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' } }}>
                 {[
                   { key: 'grade', grade: 'A', title: 'Grade: A', text: 'Among the top students in my class', Icon: WorkspacePremiumIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },
                   { key: 'project', grade: 'A+', title: 'Graduation Project: A+', text: 'Team Leader & AI Model Developer', Icon: GroupsIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },

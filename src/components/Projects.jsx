@@ -29,7 +29,7 @@ const ACCESSIBLE = {
 const PROJECTS = [
   {
     title: 'MotorSync ERP Dashboard',
-    desc: 'A full-stack car parts factory ERP dashboard with bilingual Arabic/English support (RTL/LTR), admin-protected CRUD operations, real-time analytics, and 20+ management modules covering employees, inventory, orders, machines, maintenance, quality control, payroll, and more—all backed by a live Supabase database.',
+    desc: 'A full-stack car parts factory ERP dashboard with bilingual Arabic/English support (RTL/LTR), admin-protected CRUD operations, real-time analytics, and 20+ management modules covering employees, inventory, orders, machines, maintenance, quality control, payroll, and more all backed by a live Supabase database.',
     tags: ['Supabase','PostgreSQL' ,'Tailwind CSS', 'Next.js', 'React', 'TypeScript', 'Recharts', 'Zod', 'React Icons'],
     github: 'https://github.com/esraamhmd/CarPartsFactoryDashboards',
     demo: 'https://motorsync.vercel.app/', video: `${CDN}/video/upload/v1787423380/motor_zyobac.mp4`, img: `${CDN}/image/upload/v1787423466/motor_c0wxqh.png`, cat: 'Fullstack',
