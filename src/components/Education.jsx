@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Box, useTheme, Typography, Container, Paper, Chip } from '@mui/material'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
+import GroupsIcon from '@mui/icons-material/Groups'
 
 const FONT = '"Plus Jakarta Sans", sans-serif'
 
@@ -77,34 +79,43 @@ export default function Education() {
                 Computer Science Department
               </Typography>
 
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
+              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' } }}>
                 {[
-                  
-                  { key: 'grade', label: 'Grade: A · ', extra: 'Among the top students in my class', color: isDark ? '#f96aab' : '#9c0055' },
-                  { key: 'project', label: 'Graduation Project: A+ · ', extra: 'Team Leader & AI Model Developer', color: isDark ? '#f96aab' : '#9c0055' },
+                  { key: 'grade', grade: 'A', title: 'Grade: A', text: 'Among the top students in my class', Icon: WorkspacePremiumIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },
+                  { key: 'project', grade: 'A+', title: 'Graduation Project: A+', text: 'Team Leader & AI Model Developer', Icon: GroupsIcon, accent: '#e91e8c', color: isDark ? '#f96aab' : '#9c0055' },
                 ].map(b => (
-                  <Chip key={b.key} size="small"
-                    label={b.extra ? (
-                      <>
-                        {b.label}
-                       
-                        <Box component="span" sx={{ color: 'text.secondary' }}>{b.extra}</Box>
-                      </>
-                    ) : b.label}
-                    sx={{
-                    bgcolor: 'rgba(233,30,140,0.09)',
-                    color: b.color,
-                    border: '1px solid rgba(233,30,140,0.28)',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
-                    height: 'auto',
-                    minHeight: 28,
-                    maxWidth: '100%',
-                    px: 0.5,
-                    py: 0.3,
-                    boxShadow: '0 2px 10px rgba(233,30,140,0.14)',
-                    '& .MuiChip-label': { whiteSpace: 'normal', textAlign: 'left', lineHeight: 1.4 },
-                  }} />
+                  <Box component="li" key={b.key} sx={{
+                    position: 'relative', overflow: 'hidden',
+                    display: 'flex', alignItems: 'center', gap: 2,
+                    p: 2, borderRadius: 3,
+                    border: `1px solid ${b.accent}${isDark ? '47' : '59'}`,
+                    background: `linear-gradient(135deg, ${b.accent}${isDark ? '1f' : '14'} 0%, transparent 70%)`,
+                    transition: 'transform .25s, box-shadow .25s, border-color .25s',
+                    '&:hover': { transform: 'translateY(-3px)', borderColor: b.accent, boxShadow: `0 10px 28px ${b.accent}33` },
+                    '@media (prefers-reduced-motion: reduce)': { transition: 'none' },
+                  }}>
+                    <Box aria-hidden="true" sx={{
+                      position: 'relative', flexShrink: 0, width: 64, height: 64, borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: b.grade.length > 1 ? '1.5rem' : '1.8rem',
+                      bgcolor: 'background.paper',
+                      border: `2px solid ${b.accent}`,
+                      boxShadow: `0 0 0 5px ${b.accent}1f, 0 4px 18px ${b.accent}40`,
+                    }}>
+                      {b.grade}
+                      <Box sx={{ position: 'absolute', right: -6, bottom: -6, width: 26, height: 26, borderRadius: '50%', bgcolor: 'background.paper', border: `1px solid ${b.accent}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <b.Icon sx={{ fontSize: 16, color: b.color }} />
+                      </Box>
+                    </Box>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Typography sx={{ color: b.color, fontFamily: FONT, fontWeight: 800, fontSize: '1rem', lineHeight: 1.3 }}>
+                        {b.title}
+                      </Typography>
+                      <Typography sx={{ color: 'text.secondary', fontFamily: FONT, fontSize: '0.88rem', lineHeight: 1.5, mt: 0.3 }}>
+                        {b.text}
+                      </Typography>
+                    </Box>
+                  </Box>
                 ))}
               </Box>
             </Box>

@@ -6,9 +6,9 @@ export default function LoadingScreen({ onDone }) {
   const [phase, setPhase] = useState(0)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(1), 250)
-    const t2 = setTimeout(() => setPhase(2), 650)
-    const t3 = setTimeout(() => onDone(), 1050)
+    const t1 = setTimeout(() => setPhase(1), 150)
+    const t2 = setTimeout(() => setPhase(2), 400)
+    const t3 = setTimeout(() => onDone(), 650)
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [onDone])
 
@@ -20,7 +20,7 @@ export default function LoadingScreen({ onDone }) {
       alignItems: 'center', justifyContent: 'center', gap: 2,
       opacity: phase === 2 ? 0 : 1,
       pointerEvents: phase === 2 ? 'none' : 'all',
-      transition: 'opacity 1s ease',
+      transition: 'opacity  2s ease',
     }}>
       <Box sx={{
         animation: 'emojiBounce 0.7s cubic-bezier(0.34,1.56,0.64,1) both',

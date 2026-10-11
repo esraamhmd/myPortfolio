@@ -25,6 +25,7 @@ const NAV_DESKTOP = [
   "Training",
   "Skills",
   "Projects",
+  "Services",
   "Contact",
 ];
 const NAV_ALL = [
@@ -36,6 +37,7 @@ const NAV_ALL = [
   "Education",
   "Skills",
   "Projects",
+  "Services",
   "Certificates",
   "Contact",
 ];
@@ -57,7 +59,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const t = setTimeout(() => setAnimate(true), 1000);
+    const t = setTimeout(() => setAnimate(true), 650);
     return () => clearTimeout(t);
   }, []);
 
