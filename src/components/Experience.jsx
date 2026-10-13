@@ -16,11 +16,10 @@ const EXPERIENCE = [
     period: 'Jul 2026 – Sep 2026',
     color: '#722F99', textDark: '#b06fd4', textLight: '#5a1a80',
     bullets: [
-      'Contributed as a frontend team member on Captaini, a sports coaching platform, collaborating via GitHub organization and Jira for task management and team coordination',
-      'Worked within an agile team using GitHub Organizations for version control, code reviews, and collaborative workflows across multiple contributors',
-      'Joined a separate internal team responsible for building and maintaining the company\'s collateral products, contributing to frontend development and UI implementation',
+      'Contributed as a frontend team member on Captaini, a sports coaching platform, building and refining UI features',
+      'Collaborated in an agile team using GitHub Organizations and Jira for code reviews, task management, sprint planning and daily standups',
+      'Joined a separate internal team building and maintaining the company\'s collateral products, contributing to frontend development and UI implementation',
       'Gained hands-on business exposure by understanding product requirements, client needs, and how engineering decisions align with business goals',
-      'Participated in sprint planning, daily standups, and cross-functional team collaboration in a professional software environment',
     ],
     tags: ['React.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GitHub Organizations', 'Jira', 'Agile'],
   },
@@ -63,18 +62,18 @@ export default function Experience() {
           </Typography>
         </Box>
 
-        <Box sx={{ position: 'relative', pl: { md: 4 } }}>
-          <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: 20, top: 0, bottom: 0, width: 2, background: 'linear-gradient(180deg,#722F99,#e91e8c,rgba(233,30,140,0.1))' }} />
+        <Box sx={{ position: 'relative', pl: { xs: 0, md: 4 } }}>
+          <Box aria-hidden="true" sx={{ display: 'block', position: 'absolute', left: { xs: 16, md: 20 }, top: 0, bottom: 0, width: 2, background: 'linear-gradient(180deg,#722F99,#e91e8c,rgba(233,30,140,0.1))' }} />
 
           {EXPERIENCE.map((exp, i) => {
             const textColor = isDark ? exp.textDark : exp.textLight
             return (
-            <Box key={i} sx={{ display: 'flex', gap: 3, mb: 4 }}>
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, flexShrink: 0, width: 42, height: 42, borderRadius: '50%', bgcolor: `${exp.color}18`, border: `2px solid ${exp.color}60`, alignItems: 'center', justifyContent: 'center', color: textColor, zIndex: 1, mt: 0.5 }}>
-                <exp.Icon sx={{ fontSize: 20 }} />
+            <Box key={i} sx={{ display: 'flex', gap: { xs: 1.5, sm: 3 }, mb: 4 }}>
+              <Box aria-hidden="true" sx={{ display: 'flex', flexShrink: 0, width: { xs: 34, md: 42 }, height: { xs: 34, md: 42 }, borderRadius: '50%', backgroundColor: { xs: isDark ? '#0a0a14' : '#fdf0f7', md: 'transparent' }, backgroundImage: `linear-gradient(${exp.color}18, ${exp.color}18)`, border: `2px solid ${exp.color}60`, alignItems: 'center', justifyContent: 'center', color: textColor, zIndex: 1, mt: 0.5 }}>
+                <exp.Icon sx={{ fontSize: { xs: 17, md: 20 } }} />
               </Box>
 
-              <Paper elevation={0} sx={{ flex: 1, bgcolor: 'background.paper', border: '1px solid', borderColor: `${exp.color}22`, borderRadius: 4, p: { xs: 3, md: 4 }, boxShadow: `0 4px 24px ${exp.color}0f`, '&:hover': { borderColor: `${exp.color}60`, transform: 'translateX(6px)', boxShadow: `0 12px 40px ${exp.color}18` }, transition: 'all 0.25s' }}>
+              <Paper elevation={0} sx={{ flex: 1, minWidth: 0, bgcolor: 'transparent', border: '1px solid', borderColor: `${exp.color}22`, borderRadius: 4, p: { xs: 3, md: 4 }, boxShadow: `0 4px 24px ${exp.color}0f`, '&:hover': { borderColor: `${exp.color}60`, transform: 'translateX(6px)', boxShadow: `0 12px 40px ${exp.color}18` }, transition: 'all 0.25s' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1.5, mb: 2 }}>
                   <Box>
                     <Typography sx={{ fontFamily: FONT, fontWeight: 800, fontSize: '1.15rem', color: 'text.primary', mb: 0.3 }}>{exp.role}</Typography>

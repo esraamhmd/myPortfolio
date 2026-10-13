@@ -1,16 +1,16 @@
-import React, { useState, useMemo, createContext, useCallback } from 'react'
+import React, { useState, useMemo, createContext, useCallback, useEffect, lazy, Suspense } from 'react'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
 import About from './components/About'
-import Experience from './components/Experience'
-import Education from './components/Education'
-import Training from './components/Training'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Services from './components/Services'
-import Certificates from './components/Certificates'
+const Experience = lazy(() => import('./components/Experience'))
+const Education = lazy(() => import('./components/Education'))
+const Training = lazy(() => import('./components/Training'))
+const Skills = lazy(() => import('./components/Skills'))
+const Projects = lazy(() => import('./components/Projects'))
+const Services = lazy(() => import('./components/Services'))
+const Certificates = lazy(() => import('./components/Certificates'))
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import StarBackground from './components/StarBackground'
@@ -18,9 +18,20 @@ import LoadingScreen from './components/LoadingScreen'
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {}, mode: 'dark' })
 
+const preloadSections = () => Promise.all([
+  import('./components/Experience'), import('./components/Training'), import('./components/Education'),
+  import('./components/Skills'), import('./components/Projects'), import('./components/Services'), import('./components/Certificates'),
+])
+const Hold = ({ id, h = 600, children }) => <Suspense fallback={<div id={id} style={{ minHeight: h }} />}>{children}</Suspense>
+
 export default function App() {
   const [loading, setLoading] = useState(true)
   const handleDone = useCallback(() => setLoading(false), [])
+  useEffect(() => {
+    const go = () => { preloadSections() }
+    const t = setTimeout(go, 1200)
+    return () => clearTimeout(t)
+  }, [])
   const [mode, setMode] = useState('dark')
 
   const colorMode = useMemo(() => ({
@@ -100,13 +111,13 @@ export default function App() {
           <Hero />
           <Stats />
           <About />
-          <Experience/>
-          <Training />
-          <Education />
-          <Skills />
-          <Projects />
-          <Services />
-          <Certificates />
+          <Hold id="experience"><Experience /></Hold>
+          <Hold id="training"><Training /></Hold>
+          <Hold id="education"><Education /></Hold>
+          <Hold id="skills"><Skills /></Hold>
+          <Hold id="projects"><Projects /></Hold>
+          <Hold id="services"><Services /></Hold>
+          <Hold id="certificates"><Certificates /></Hold>
           <Contact />
           <Footer />
 

@@ -59,7 +59,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const t = setTimeout(() => setAnimate(true), 650);
+    const t = setTimeout(() => setAnimate(true), 450);
     return () => clearTimeout(t);
   }, []);
 

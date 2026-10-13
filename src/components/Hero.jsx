@@ -8,7 +8,7 @@ import { ColorModeContext } from '../App'
 
 const FONT = '"Fredoka", sans-serif'
 const ROLE = 'Fullstack Developer'
-const DELAY = 0.65
+const DELAY = 0.45
 
 const charCss = ROLE.split('').map((_, i) =>
   `.tc-${i}{animation:tc-show 0.18s ease ${DELAY + i * 0.12}s both;}`

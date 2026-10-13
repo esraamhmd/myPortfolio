@@ -240,17 +240,18 @@ export default function Services() {
             Have a project in mind? Let&apos;s build it together.
           </Typography>
           <Button
+            variant="contained"
             onClick={() => setOpen(true)}
             aria-haspopup="dialog"
             startIcon={<RocketLaunchIcon />}
             endIcon={<ArrowForwardIcon />}
             sx={{
-              fontFamily: FONT, fontWeight: 800, textTransform: 'none', fontSize: '1rem',
-              px: 4, py: 1.4, borderRadius: 50, color: '#fff',
-              background: 'linear-gradient(135deg, #dd1682, #7b2cbf)',
-              boxShadow: '0 8px 26px rgba(221,22,130,0.35)',
-              transition: 'transform .2s, box-shadow .2s, filter .2s',
-              '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 12px 32px rgba(221,22,130,0.5)', filter: 'brightness(1.08)' },
+              fontFamily: FONT, fontWeight: 700, textTransform: 'none', fontSize: '1rem',
+              px: 4, py: 1.4, borderRadius: 3, color: '#fff',
+              bgcolor: isDark ? '#dd1682' : 'primary.main',
+              boxShadow: '0 4px 16px rgba(233,30,140,0.35)',
+              transition: 'all 0.2s',
+              '&:hover': { bgcolor: 'primary.dark', boxShadow: '0 8px 24px rgba(233,30,140,0.5)', transform: 'translateY(-2px)' },
             }}
           >
             Hire Me / Start a Project
